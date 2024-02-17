@@ -15,7 +15,7 @@ try {
     echo "<p>2. Output result is " . gettype($version)."</p>";
     $stmt = $conn->query('SELECT 100 from myuser;');
     $version = $stmt->fetchAll();
-    echo "<p>3. Output result is " . strval($version[0])."</p>";
+    echo "<p>3. Output result is " . implode(" ", $version[0])."</p>";
 
 
 } catch(PDOException $e) {

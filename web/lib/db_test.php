@@ -12,10 +12,10 @@ try {
     echo "<p>1. Output result is " . $version."</p>";
     $stmt = $conn->query('SELECT 100 from myuser;');
     $version = $stmt->fetchColumn();
-    echo "<p>2. Output result is " . $version."</p>";
+    echo "<p>2. Output result is " . strval($version)."</p>";
     $stmt = $conn->query('SELECT 100 from myuser;');
     $version = $stmt->fetchAll();
-    echo "<p>3. Output result is " . $version."</p>";
+    echo "<p>3. Output result is " . strval($version[0])."</p>";
 
 
 } catch(PDOException $e) {

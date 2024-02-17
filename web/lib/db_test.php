@@ -7,9 +7,16 @@ $password = 'RQHfnfnO07Owiin69v9mf375Vrkd2yPi';
 try {
     $conn = new PDO("pgsql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->query('SELECT count(id) from myuser;');
+    $stmt = $conn->query('SELECT COUNT(*) from myuser;');
+    $version = $stmt->fetchColumn();
+    echo "<p>1. Output result is " . $version."</p>";
+    $stmt = $conn->query('SELECT 100 from myuser;');
+    $version = $stmt->fetchColumn();
+    echo "<p>2. Output result is " . $version."</p>";
+    $stmt = $conn->query('SELECT 100 from myuser;');
     $version = $stmt->fetchAll();
-    echo "<p>Output result: " . $version . "</p>";
+    echo "<p>3. Output result is " . $version."</p>";
+
 
 } catch(PDOException $e) {
     echo "<p>Unable to connect to the database: " . $e->getMessage() . "</p>";

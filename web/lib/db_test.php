@@ -11,7 +11,7 @@ try {
     $version = $stmt->fetchColumn();
     echo "<p>1. Output result is " . gettype($version)."</p>";
 
-    $stmt = $conn->query('SELECT "100";');
+    $stmt = $conn->query('SELECT 100;');
     $version = $stmt->fetchColumn();
     echo "<p>2. Output result is " . (int) $version."</p>";
 

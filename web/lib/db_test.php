@@ -17,7 +17,7 @@ try {
 
     $stmt = $conn->query('SELECT 100;');
     $version = $stmt->fetchAll();
-    echo "<p>3. Output result is " . implode(" ", $version)."</p>";
+    echo "<p>3. Output result is " . json_encode($version) ."</p>";
 
     echo "<p>4. Output result is " . true."</p>";
     echo "<p>4. Output result is " . 1 ."</p>";

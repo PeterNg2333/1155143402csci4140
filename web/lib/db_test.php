@@ -11,11 +11,11 @@ try {
     $version = $stmt->fetchColumn();
     echo "<p>1. Output result is " . gettype($version)."</p>";
 
-    $stmt = $conn->query('SELECT 100 from myuser;');
+    $stmt = $conn->query('SELECT "100";');
     $version = $stmt->fetchColumn();
     echo "<p>2. Output result is " . (int) $version."</p>";
 
-    $stmt = $conn->query('SELECT 100 from myuser;');
+    $stmt = $conn->query('SELECT 100;');
     $version = $stmt->fetchAll();
     echo "<p>3. Output result is " . implode(" ", $version)."</p>";
 

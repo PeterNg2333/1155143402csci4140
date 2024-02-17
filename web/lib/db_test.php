@@ -9,10 +9,10 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->query('SELECT COUNT(*) from myuser;');
     $version = $stmt->fetchColumn();
-    echo "<p>1. Output result is " . $version."</p>";
+    echo "<p>1. Output result is " . gettype($version)."</p>";
     $stmt = $conn->query('SELECT 100 from myuser;');
     $version = $stmt->fetchColumn();
-    echo "<p>2. Output result is " . strval($version)."</p>";
+    echo "<p>2. Output result is " . gettype($version)."</p>";
     $stmt = $conn->query('SELECT 100 from myuser;');
     $version = $stmt->fetchAll();
     echo "<p>3. Output result is " . strval($version[0])."</p>";

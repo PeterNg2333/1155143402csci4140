@@ -63,7 +63,7 @@ function csci4140_login(){
         return "User Not found.";
     }
     $result = $query->fetchAll();
-    return json_encode($result) ;
+    return json_encode($result[0]) ;
     
 }
 

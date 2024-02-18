@@ -1,7 +1,7 @@
 <?php
 require __DIR__.'/lib/db_connect.php';
 
-header('Content-type: ' . 'image/png');
+
 
 $imageData = retrieve_image();
 $imageDataDecoded = base64_decode($imageData);
@@ -12,6 +12,8 @@ $image->readImageBlob($imageDataDecoded);
 
 $image -> blurImage(5, 3);
 $image -> borderImage('black', 5, 5);
+
+header('Content-type: ' . 'image/png');
 echo $image;
 
 ?>

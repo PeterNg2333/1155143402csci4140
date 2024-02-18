@@ -54,8 +54,8 @@ function csci4140_login(){
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $username = validate_input(string_sanitization($_REQUEST['username']), '/[^$@\'&"=|]+/', "invalid-username");
-    $password = validate_input(string_sanitization($_REQUEST['password']), '/[^$@\'&"=|]+/', "invalid-password");
+    $username = validate_input(string_sanitization($_POST['username']), '/[^$@\'&"=|]+/', "invalid-username");
+    // $password = validate_input(string_sanitization($_POST['password']), '/[^$@\'&"=|]+/', "invalid-password");
 
     $query = $conn->prepare("Select * FROM MYUSER WHERE name = ? LIMIT 1;");
     $query->bindParam(1, $username);

@@ -13,7 +13,7 @@ function is_form_action($action){
         || $action == "logout" 
         || $action == "fetch_ten_image" 
         || $action == "retrieve_image"
-        || $action == "updload_image"
+        || $action == "upload_image"
         || $action == "save_image" 
         || $action == "delete_image" 
         || $action == "delete_all"

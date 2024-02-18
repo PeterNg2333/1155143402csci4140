@@ -51,12 +51,12 @@ function csci4140_show_request(){
                             //////// Image Management ///////
 //////////////////////////////////////////////////////////////////////////////////
 function csci4140_upload_image(){
-    if ($_FILES['userImage']) {
-        $result = store_file($_FILES['userImage']);
+    if ($_FILES['file']) {
+        $result = store_file($_FILES['file']);
         return $result;
     }else {
         echo "No file uploaded";
-        return json_encode($_FILES['userImage']);
+        return json_encode($_FILES['file']);
         
     }
 }

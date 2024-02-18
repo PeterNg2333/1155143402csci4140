@@ -93,7 +93,7 @@
                 <form  method="post" action="./lib/process.php?action=upload_image" class="d-flex">
                     <div class="input-group">
                         <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>
-                        <input type="file" name="userImage" class="form-control d-none" id="inputGroupFile">
+                        <input type="file" name="file" class="form-control d-none" id="inputGroupFile" accept="image/*">
                         <label class="input-group-text btn btn-info text-white" for="inputGroupFile">Upload</label>  
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary ms-2">Submit</button>

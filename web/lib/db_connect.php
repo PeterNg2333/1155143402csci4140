@@ -96,6 +96,48 @@ function csci4140_login(){
     } 
 }
 
+function csci4140_logout(){
+    unset($_COOKIE['auth']);
+    setcookie('auth', '', time()-3600, "/", "", true, true);
+    unset($_SESSION['auth']);
+    header('Location: ../login.php', true, 302);
+    return "Successfully logged out";
+}
+
+function is_auth(){
+    if (isset($_COOKIE['auth']) && isset($_SESSION['auth'])){
+        $cookie = json_decode($_COOKIE['auth'], true);
+        $session = $_SESSION['auth'];
+        if ($cookie['name'] == $session['name'] && $cookie['exp'] == $session['exp'] && $cookie['k'] == $session['k']){
+            return true;
+        }
+    }
+    return false;
+}
+
+function is_admin($username){
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("Select flag FROM MYUSER WHERE name = ? LIMIT 1;");
+    $query->bindParam(1, $username);
+    if (!($query->execute())){
+        return "Error in query";
+    }
+    if ($query->rowCount() == 0){
+        return "User not found";
+    }
+    $db_user = $query->fetchAll()[0];
+    $db_flag = $db_user["flag"];
+    if ($db_flag==1){
+        return true;
+    } 
+    else{
+        return false;
+    }
+}
 
 function csci4140_create_pd(){
     global $conn;

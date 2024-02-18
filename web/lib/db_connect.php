@@ -104,7 +104,7 @@ function csci4140_fetch_ten_image(){
         return "Error in query";
     }
     $result = $query->fetchAll()[0];
-    header('Content-type: ' . $result['image_type']);
+    header('Content-type: ' . $result['filetype']);
     echo $result['img'];
     exit();
 }

@@ -30,7 +30,7 @@
                             echo '</button><button type="submit" class="btn btn-outline-success">Exit</button>';
                         } else {
                             echo "Guest";
-                            echo '</button><a href="./login.php" class="btn btn-outline-success">Exit</a>';
+                            echo '</button><a href="./login.php" class="btn btn-outline-primary">Login</a>';
                         }
                     ?>
                 

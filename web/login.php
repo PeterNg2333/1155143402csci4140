@@ -27,9 +27,13 @@
                 <button class="btn btn-primary btn-block" style="width: 250px;"> Login </button>
               </div>
           </form>
-          <div class="form-outline text-center mb-4 mx-auto">
-              <a href="./change_password_admin.php" > Create pw </a>
-          </div>
-      </smain>
+          <br>
+          <br>
+          <form class="form-outline text-center mb-4 mx-auto" method="POST" action="./lib/process.php?action=show_request">
+              <input style="width: 250px;" id="username" name="username" placeholder="User name" required pattern="^[\w\-\/][\w\'\-\/\.]*@[\w\-]+(\.[\w\-]+)*(\.[\w]{2,6})$"/>
+              <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password" pattern="^[\w\-\@\!\']+$" required/>
+              <button type = "submit" > Create pw </a>
+          </form>
+      </main>
 </body>
 </html>

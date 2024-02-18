@@ -21,15 +21,20 @@ function csci4140_db_test(){
         global $conn;
         $conn = db_connect();
         if ($conn instanceof PDOException) {
-            return "<p>Unable to connect to the database: " . $conn->getMessage() . "</p>";
+            return "Unable to connect to the database: " . $conn->getMessage();
         }
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->query('SELECT version()');
         $version = $stmt->fetchColumn();
-        return "<p>Successfully connected to the Database. Version: " . $version . "</p>";
+        return "Successfully connected to the Database. Version: " . $version;
     
     } catch(PDOException $e) {
-        return "<p>Error in query: " . $e->getMessage() . "</p>";
+        return "Error in query: " . $e->getMessage();
     }
 }
+
+function csci4140_show_request(){
+    return json_encode($_REQUEST);
+}
+
 ?>

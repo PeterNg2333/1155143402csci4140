@@ -25,6 +25,5 @@ if (empty($process_action)
             echo json_encode(array('failed' => $e->getMessage()));
         }
     }
-
 exit();
 ?>  

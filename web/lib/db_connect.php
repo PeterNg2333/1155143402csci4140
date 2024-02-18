@@ -88,7 +88,7 @@ function store_file($file){
         $query->execute();
         $imageId = $conn->lastInsertId();
         $file_name = $imageId . "-" . $name;
-        $uploadResult = move_uploaded_file($file['tmp_name'], "../images/" . $file_name);
+        $uploadResult = move_uploaded_file($file['tmp_name'], "/var/www/html/images/" . $file_name);
         if (!$uploadResult) {
             return "Error in uploading the file";
         }

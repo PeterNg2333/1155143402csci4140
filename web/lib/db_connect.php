@@ -136,12 +136,6 @@ function is_auth(){
         $db_hash_password = $db_user["hash_password"];
         $new_hash_password = hash_hmac('sha256', $db_hash_password . $cookie_exp, $db_salt);
         if ($new_hash_password == $cookie_k){
-            $exp = time() + 3600;
-            $hash = hash_hmac('sha256', $db_hash_password . $exp, $db_salt);
-            $token = array('name'=>$cookie_name, 'exp'=>$exp, 'k'=> ($hash));
-            setcookie('auth', json_encode($token), $exp, "/", "", true, true);
-            $_SESSION['auth'] = $token;
-            session_regenerate_id();
             return $cookie_name;
         }else{
             return false;

@@ -73,6 +73,7 @@ function store_file($file){
         if ($conn instanceof PDOException) {
             return "Unable to connect to the database: " . $conn->getMessage();
         }   
+        $img = file_get_contents($file['tmp_name']);
         $name = validate_input(string_sanitization($file['name']), '/^[\w\- ]+$/', "invalid-filename");
         $creator = get_id_from_username(is_auth());
         $is_public = validate_input(string_sanitization($_POST["isPublic"]), '/^[\w\- ]+$/', "invalid-flag");
@@ -80,18 +81,14 @@ function store_file($file){
         if ($is_public == "on"){
             $flag = 1;
         }
-        $query = $conn->prepare('INSERT INTO myimage(name, filetype, flag, creator) VALUES (?, ?, ?, ?);');
+        $query = $conn->prepare('INSERT INTO myimage(name, img, filetype, flag, creator) VALUES (?, ?, ?, ?, ?);');
         $query -> bindParam(1, $name);
-        $query -> bindParam(2, $fileType);
-        $query -> bindParam(3, $flag);
-        $query -> bindParam(4, $creator);
+        $query -> bindParam(2, $img, PDO::PARAM_LOB);
+        $query -> bindParam(3, $fileType);
+        $query -> bindParam(4, $flag);
+        $query -> bindParam(5, $creator);
         $query->execute();
         $imageId = $conn->lastInsertId();
-        $file_name = $imageId . "-" . $name;
-        $uploadResult = move_uploaded_file($file['tmp_name'], $_SERVER['DOCUMENT_ROOT']. '/image_db/' . $file_name);
-        if (!$uploadResult) {
-            return "Error in uploading the file". $file["error"];
-        }
         return "Successfully uploaded the image with ID: " . $imageId;
     }
 }

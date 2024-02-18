@@ -4,7 +4,12 @@ RUN DEBIAN_FRONTEND=noninteractive
 WORKDIR /var/www/html
 COPY web .
 
-RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libmagickwand-dev --no-install-recommends \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick \
+    && docker-php-ext-install pdo_pgsql
 
 
 

@@ -16,7 +16,7 @@ function db_connect() {
     }
 }
 
-function db_test(){
+function csci4140_db_test(){
     try {
         global $conn;
         $conn = db_connect();

@@ -104,7 +104,7 @@ function csci4140_logout(){
     return "Successfully logged out";
 }
 
-function is_auth(){
+function csci4140_is_auth(){
     if (isset($_SESSION['auth'])){
         return $_SESSION['auth']["name"];
     }

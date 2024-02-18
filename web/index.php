@@ -12,6 +12,7 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
   </head>
   <body>
+    <!--  /////////////////////////  Header  /////////////////////////  -->
     <nav class="navbar navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand fw-bold fst-italic" href="#">
@@ -23,11 +24,13 @@
                     <?php
                         $auth = is_auth();
                         if ($auth){
-                            if (is_admin($auth))
-                                echo "Admin";
+                            if (is_admin($auth)){
+                                echo "Admin</button>";
+                                echo '<a href="./initialization.php" class="btn btn-outline-danger"> Init </button>';
+                            }
                             else 
-                                echo "Normal User"; 
-                            echo '</button><button type="submit" class="btn btn-outline-success">Exit</button>';
+                                echo "Normal User</button>"; 
+                            echo '<button type="submit" class="btn btn-outline-success">Exit</button>';
                         } else {
                             echo "Guest";
                             echo '</button><a href="./login.php" class="btn btn-outline-primary">Login</a>';
@@ -38,6 +41,7 @@
         </div>
     </nav>
 
+    <!--  /////////////////////////  Main  /////////////////////////  -->
     <main class="container mt-2 border rounded border-dark">
         <section class="row ">
             <div class="col-md-12 mt-1 pt-1 fw-light">
@@ -80,11 +84,12 @@
         </section >
     </main>
 
+    <!--  /////////////////////////  Upload file  /////////////////////////  -->
     <section class="container mt-2 bg-light p-0 mt-2 border border-dark">
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#"></a>
-                <form action="upload.php" method="post" enctype="multipart/form-data" class="d-flex">
+                <form action="upload.php" method="post" action="./lib/process.php?action=show_request" class="d-flex">
                     <div class="input-group">
                         <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>
                         <input type="file" class="form-control d-none" id="inputGroupFile">

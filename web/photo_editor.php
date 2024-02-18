@@ -62,7 +62,7 @@
                         </div>
                       </div>
                     </figcaption>
-                    <form class="col-4">
+                    <form class="col-4" method="POST" action="./lib/process.php?action=show_request">
                         <div class="row m-1"> 
                             <span class="align-middle col-2">Filter: </span>
                             <div class="col-5"><div class="row px-1">

@@ -10,6 +10,7 @@ $password = 'RQHfnfnO07Owiin69v9mf375Vrkd2yPi';
 //////////////////////////////////////////////////////////////////////////////////
                             //////// DataBase ///////
 //////////////////////////////////////////////////////////////////////////////////
+session_start(['cookie_httponly' => true, 'cookie_secure' => true,]);
 function db_connect() {
     global $host, $dbname, $username, $password;
     try {
@@ -67,17 +68,32 @@ function csci4140_login(){
     }
     $db_user = $query->fetchAll()[0];
     $db_hash_password = $db_user["hash_password"];
+    $db_flag = $db_user["flag"];
     $db_salt = $db_user["salt"];
     $new_hash_password = hash_hmac('sha256', $password, $db_salt);
 
     if ($new_hash_password == $db_hash_password){
-        return "Successfully logged in";
         // When successfully authenticated,
         // 1. create authentication token
-        
+        $exp = time() + 3600*24;
+        $hash = hash_hmac('sha256', $username . $exp, $db_salt);
+        $token = array('name'=>$username, 'exp'=>$exp, 'k'=> ($hash));
+        setcookie('auth', json_encode($token), $exp, "/", "", true, true);
+        $_SESSION['auth'] = $token;
+        session_regenerate_id();
     } else {
         return "Wrong user name or password";
     }
+
+    // 2. redirect to page 
+    if ($db_flag==1){
+        header('Location: ../index.php?role=admin', true, 302);
+        return "Successfully logged in as admin";
+    } 
+    else{
+        header('Location: ../index.php?role=user', true, 302);
+        return "Successfully logged in as user";
+    } 
 }
 
 

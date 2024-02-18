@@ -48,6 +48,26 @@ function csci4140_show_request(){
 //////////////////////////////////////////////////////////////////////////////////
                       //////// Password Management ///////
 //////////////////////////////////////////////////////////////////////////////////
+function csci4140_Login(){
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $username = validate_input(string_sanitization($_REQUEST['username']), '/[^$@\'&"=|]+/', "invalid-username");
+    $password = validate_input(string_sanitization($_REQUEST['password']), '/[^$@\'&"=|]+/', "invalid-password");
+
+    $query = $conn->prepare("Select * FROM MYUSER WHERE username = ? LIMIT 1;");
+    $query->bindParam(1, $username);
+    if (!($query->execute())){
+        return "User Not found.";
+    }
+    $result = $query->fetchAll()[0];
+    return $result;
+    
+}
+
+
 function csci4140_create_pd(){
     global $conn;
     $conn = db_connect();

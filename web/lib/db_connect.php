@@ -1,6 +1,7 @@
 <?php
 include_once('utilities/sanitization.php');
 include_once('utilities/validation.php');
+session_start(['cookie_httponly' => true, 'cookie_secure' => true,]);
 
 $host = 'dpg-cn6tmn2cn0vc73dmghjg-a';
 $dbname = 'db_1155143402csci4140';
@@ -10,7 +11,7 @@ $password = 'RQHfnfnO07Owiin69v9mf375Vrkd2yPi';
 //////////////////////////////////////////////////////////////////////////////////
                             //////// DataBase ///////
 //////////////////////////////////////////////////////////////////////////////////
-session_start(['cookie_httponly' => true, 'cookie_secure' => true,]);
+
 function db_connect() {
     global $host, $dbname, $username, $password;
     try {

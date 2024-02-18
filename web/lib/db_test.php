@@ -39,7 +39,7 @@ try {
     SALT VARCHAR(80) NOT NULL,
     FLAG INTEGER NOT NULL
 );
-    Create Table MyImage(img_id INT Primary Key, Name Varchar Not Null, img bytea, filetype Text, FLAG INTEGER NOT NULL, creator INT NOT NULL references MyUser(id));
+    Create Table MyImage(img_id INT Primary Key, Name Varchar Not Null, img bytea, filetype Text, FLAG INTEGER NOT NULL, creator INT NOT NULL references MyUser(id))
 
 
 -->

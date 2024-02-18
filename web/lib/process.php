@@ -3,8 +3,8 @@ include_once('db_connect.php');
 include_once('utilities/sanitization.php');
 include_once('utilities/validation.php');
 
-header('Content-Type: text/html; charset=UTF-8');
 $process_action = string_sanitization($_REQUEST['action']);
+header('Content-Type: text/html; charset=UTF-8');
 
 if (empty($process_action) 
     || !preg_match('/^\w+$/', $process_action)

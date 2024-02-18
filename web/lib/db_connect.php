@@ -99,7 +99,7 @@ function csci4140_fetch_ten_image(){
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("SELECT * FROM myimage WHERE img_id = 1 LIMIT 10;");
+    $query = $conn->prepare("SELECT img_id, encode(img, 'base64') As img, filetype FROM myimage WHERE img_id = 1 LIMIT 10;");
     if (!($query->execute())) {
         return "Error in query";
     }

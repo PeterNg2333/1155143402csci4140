@@ -55,7 +55,7 @@ function csci4140_login(){
         return "Unable to connect to the database: " . $conn->getMessage();
     }
     $username = validate_input(string_sanitization($_POST['username']), '/[^$@\'&"=|]+/', "invalid-username");
-    // $password = validate_input(string_sanitization($_POST['password']), '/[^$@\'&"=|]+/', "invalid-password");
+    $password = validate_input(string_sanitization($_POST['password']), '/[^$@\'&"=|]+/', "invalid-password");
 
     $query = $conn->prepare("Select * FROM MYUSER WHERE name = ? LIMIT 1;");
     $query->bindParam(1, $username);
@@ -63,7 +63,10 @@ function csci4140_login(){
         return "User Not found.";
     }
     $result = $query->fetchAll()[0];
-    return json_encode($result["salt"]) ;
+    $salt = $result["salt"];
+    $hash_password = hash_hmac('sha256', $password, $salt);
+
+    return json_encode(array('hash_password' => $hash_password, 'result' => $result["hash_password"])); ;
     
 }
 

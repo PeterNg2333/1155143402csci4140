@@ -75,8 +75,8 @@ function csci4140_login(){
     if ($new_hash_password == $db_hash_password){
         // When successfully authenticated,
         // 1. create authentication token
-        $exp = time() + 3600*24;
-        $hash = hash_hmac('sha256', $username . $exp, $db_salt);
+        $exp = time() + 3600;
+        $hash = hash_hmac('sha256', $db_hash_password . $exp, $db_salt);
         $token = array('name'=>$username, 'exp'=>$exp, 'k'=> ($hash));
         setcookie('auth', json_encode($token), $exp, "/", "", true, true);
         $_SESSION['auth'] = $token;
@@ -105,11 +105,37 @@ function csci4140_logout(){
 }
 
 function is_auth(){
-    if (isset($_COOKIE['auth']) && isset($_SESSION['auth'])){
+    if (isset($_SESSION['auth'])){
+        return $_SESSION['auth']["name"];
+    }
+    if (isset($_COOKIE['auth'])){
         $cookie = json_decode($_COOKIE['auth'], true);
-        $session = $_SESSION['auth'];
-        if ($cookie['name'] == $session['name'] && $cookie['exp'] == $session['exp'] && $cookie['k'] == $session['k']){
-            return true;
+        $cookie_name = $cookie["name"];
+        $cookie_exp = $cookie["exp"];  
+        $cookie_k = $cookie["k"];
+        $conn = db_connect();
+        $query = $conn->prepare("Select * FROM MYUSER WHERE name = ? LIMIT 1;");
+        $query->bindParam(1, $cookie_name);
+        if (!($query->execute())){
+            return "Error in query";
+        }
+        if ($query->rowCount() == 0){
+            return "User not found";
+        }
+        $db_user = $query->fetchAll()[0];
+        $db_salt = $db_user["salt"];
+        $db_hash_password = $db_user["hash_password"];
+        $new_hash_password = hash_hmac('sha256', $db_hash_password . $cookie_exp, $db_salt);
+        if ($new_hash_password == $cookie_k){
+            $exp = time() + 3600;
+            $hash = hash_hmac('sha256', $db_hash_password . $exp, $db_salt);
+            $token = array('name'=>$cookie_name, 'exp'=>$exp, 'k'=> ($hash));
+            setcookie('auth', json_encode($token), $exp, "/", "", true, true);
+            $_SESSION['auth'] = $token;
+            session_regenerate_id();
+            return $cookie_name;
+        }else{
+            return false;
         }
     }
     return false;

@@ -90,7 +90,7 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#"></a>
-                <form  method="post" action="./lib/process.php?action=upload_image" class="d-flex">
+                <form  method="post" action="./lib/process.php?action=upload_image" enctype="multipart/form-data" class="d-flex">
                     <div class="input-group">
                         <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>
                         <input type="file" name="file" class="form-control d-none" id="inputGroupFile" accept="image/*">
@@ -101,8 +101,6 @@
                         <input class="form-check-input" name="isPublic" type="checkbox" id="flexSwitchCheckDefault" checked>
                         <div class="p-0"> Public </div>
                     </div>
-
-                    
                 </form>
             </div>
         </nav>

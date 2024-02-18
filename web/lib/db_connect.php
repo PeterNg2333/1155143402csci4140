@@ -83,9 +83,9 @@ function store_file($file){
         }
         $query = $conn->prepare('INSERT INTO myimage(name, filetype, flag, creator) VALUES (?, ?, ?, ?);');
         $query -> bindParam(1, $name);
-        $query -> bindParam(3, $fileType);
-        $query -> bindParam(4, $flag);
-        $query -> bindParam(5, $creator);
+        $query -> bindParam(2, $fileType);
+        $query -> bindParam(3, $flag);
+        $query -> bindParam(4, $creator);
         $query->execute();
         $imageId = $conn->lastInsertId();
         if ($fileType == "image/png"){

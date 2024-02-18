@@ -1,5 +1,5 @@
 <?php
-        require __DIR__.'lib/db_connect.php';
+        require __DIR__.'/lib/db_connect.php';
 ?> 
 
 <!DOCTYPE html>

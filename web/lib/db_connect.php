@@ -87,11 +87,11 @@ function csci4140_login(){
 
     // 2. redirect to page 
     if ($db_flag==1){
-        header('Location: ../index.php?role=admin', true, 302);
+        header('Location: ../index.php', true, 302);
         return "Successfully logged in as admin";
     } 
     else{
-        header('Location: ../index.php?role=user', true, 302);
+        header('Location: ../index.php', true, 302);
         return "Successfully logged in as user";
     } 
 }
@@ -104,7 +104,15 @@ function csci4140_logout(){
     return "Successfully logged out";
 }
 
-function csci4140_is_auth(){
+function csci4140_check_auth(){
+    if (is_auth()){
+        return "Authenticated";
+    } else {
+        return "Not Authenticated";
+    }
+}
+
+function is_auth(){
     if (isset($_SESSION['auth'])){
         return $_SESSION['auth']["name"];
     }
@@ -166,28 +174,28 @@ function is_admin($username){
     }
 }
 
-function csci4140_create_pd(){
-    global $conn;
-    $conn = db_connect();
-    if ($conn instanceof PDOException) {
-        return "Unable to connect to the database: " . $conn->getMessage();
-    }
-    $username = validate_input(string_sanitization($_REQUEST['username']), '/[^$@\'&"=|]+/', "invalid-username");
-    $password = validate_input(string_sanitization($_REQUEST['password']), '/[^$@\'&"=|]+/', "invalid-password");
-    $flag = 1;
-    $salt = random_int(0, PHP_INT_MAX);
-    $hash_password = hash_hmac('sha256', $password, $salt);
+// function csci4140_create_pd(){
+//     global $conn;
+//     $conn = db_connect();
+//     if ($conn instanceof PDOException) {
+//         return "Unable to connect to the database: " . $conn->getMessage();
+//     }
+//     $username = validate_input(string_sanitization($_REQUEST['username']), '/[^$@\'&"=|]+/', "invalid-username");
+//     $password = validate_input(string_sanitization($_REQUEST['password']), '/[^$@\'&"=|]+/', "invalid-password");
+//     $flag = 1;
+//     $salt = random_int(0, PHP_INT_MAX);
+//     $hash_password = hash_hmac('sha256', $password, $salt);
 
-    $query = $conn->prepare('INSERT INTO myuser(name, hash_password, salt, flag) VALUES (?, ?, ?, ?);');
-    $query -> bindParam(1, $username);
-    $query -> bindParam(2, $hash_password);
-    $query -> bindParam(3, $salt);
-    $query -> bindParam(4, $flag);
+//     $query = $conn->prepare('INSERT INTO myuser(name, hash_password, salt, flag) VALUES (?, ?, ?, ?);');
+//     $query -> bindParam(1, $username);
+//     $query -> bindParam(2, $hash_password);
+//     $query -> bindParam(3, $salt);
+//     $query -> bindParam(4, $flag);
 
-    if ($query->execute()) {
-        return "Successfully created the accound for " . $username;
-    } else {
-        return "Error in query";
-    }
-}
+//     if ($query->execute()) {
+//         return "Successfully created the accound for " . $username;
+//     } else {
+//         return "Error in query";
+//     }
+// }
 ?>

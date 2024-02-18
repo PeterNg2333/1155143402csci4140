@@ -8,13 +8,9 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
   </head>
   <body>
-    <!-- <?php
-      // echo '<h1>Hello this world!</h1>';
-      // echo '<p>This page uses PHP version '
-      //     . phpversion()
-      //     . '.</p>';
-      // include('db_connect.php');
-    ?>  -->
+    <?php
+        include_once('lib/db_connect.php');
+    ?> 
     
     <nav class="navbar navbar-light bg-light">
         <div class="container">
@@ -22,9 +18,21 @@
               <img src="Resources/Instagram_icon.png" alt="" width="24" height="24" class="d-inline-block align-text-top">
               Web Instagram
             </a>
-            <form class="d-flex">
-                <button class="btn btn-outline-light text-dark" disabled>Normal User</button>
-                <button class="btn btn-outline-success">Exit</button>
+            <form class="d-flex" method="POST" action="./lib/process.php?action=logout">
+                <button class="btn btn-outline-light text-dark" disabled>
+                    <?php
+                        $auth = is_auth();
+                        if ($auth){
+                            if (is_admin($auth))
+                                echo "Admin";
+                            else 
+                                echo "Normal User"; 
+                        } else {
+                            echo "Guest";
+                        }
+                    ?>
+                </button>
+                <button type="submit" class="btn btn-outline-success">Exit</button>
             </form>
         </div>
     </nav>

@@ -19,7 +19,7 @@ function is_form_action($action){
         || $action == "delete_all"
         || $action == "db_test"
         || $action == "show_request"
-        || $action == "is_auth"
+        || $action == "check_auth"
         ){
         return true;
     }

@@ -110,7 +110,7 @@ function csci4140_login(){
         return "Error in query";
     }
     if ($query->rowCount() == 0){
-        echo "User not found, go back to <a href='../index.php'></a>";
+        echo "<p> User not found, go back to <a href='../index.php'></a></p>";
         exit();
     }
     $db_user = $query->fetchAll()[0];
@@ -129,7 +129,7 @@ function csci4140_login(){
         $_SESSION['auth'] = $token;
         session_regenerate_id();
     } else {
-        echo "Wrong user name or password, go back to <a href='../index.php'></a>";
+        echo "<p>Wrong user name or password, go back to <a href='../index.php'> index.php </a></p>";
         exit();
     }
 

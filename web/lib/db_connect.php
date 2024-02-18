@@ -73,7 +73,6 @@ function store_file($file){
         if ($conn instanceof PDOException) {
             return "Unable to connect to the database: " . $conn->getMessage();
         }   
-        $img = file_get_contents($file['tmp_name']);
         $name = validate_input(string_sanitization($file['name']), '/^[\w\- ]+$/', "invalid-filename");
         $creator = get_id_from_username(is_auth());
         $is_public = validate_input(string_sanitization($_POST["isPublic"]), '/^[\w\- ]+$/', "invalid-flag");

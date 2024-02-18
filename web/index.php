@@ -93,12 +93,12 @@
                 <form action="upload.php" method="post" action="./lib/process.php?action=show_request" class="d-flex">
                     <div class="input-group">
                         <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>
-                        <input type="file" class="form-control d-none" id="inputGroupFile">
+                        <input type="file" name="userImage" class="form-control d-none" id="inputGroupFile">
                         <label class="input-group-text btn btn-info text-white" for="inputGroupFile">Upload</label>  
                     </div>
                     <button type="submit" class="btn btn-sm btn-primary ms-2">Submit</button>
                     <div class="form-check form-switch ms-2">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
+                        <input class="form-check-input" name="isPublic" type="checkbox" id="flexSwitchCheckDefault" checked>
                         <div class="p-0"> Public </div>
                     </div>
 

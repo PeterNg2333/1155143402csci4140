@@ -48,6 +48,24 @@ function csci4140_show_request(){
 }
 
 //////////////////////////////////////////////////////////////////////////////////
+                            //////// Image Management ///////
+//////////////////////////////////////////////////////////////////////////////////
+function csci4140_upload_image(){
+    if (isset($_FILES['userfile'])) {
+        $allowedTypes = ['image/jpg', 'image/png', 'image/gif'];
+        $fileType = $_FILES['userfile']['type'];
+        if (!in_array($fileType, $allowedTypes)) {
+            return "Invalid file type";
+        }
+        
+        echo $result;
+    }else {
+        echo "No file uploaded";
+    }
+}
+                                                     
+
+//////////////////////////////////////////////////////////////////////////////////
                       //////// Password Management ///////
 //////////////////////////////////////////////////////////////////////////////////
 function csci4140_login(){

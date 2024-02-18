@@ -65,7 +65,7 @@ function store_file($file){
     global $conn;
     $allowedTypes = ['image/jpg', 'image/png', 'image/gif'];
     $fileType = $file['type'];
-    if (!in_array($fileType, $allowedTypes)) {
+    if (!in_array($fileType, $allowedTypes) || !in_array(mime_content_type($fileType), $allowedTypes)) {
         return "Invalid file type";
     }
     else {

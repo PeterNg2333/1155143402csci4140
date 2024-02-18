@@ -5,11 +5,10 @@ header('Content-type: ' . 'image/png');
 
 $imageData = retrieve_image();
 $imageDataDecoded = base64_decode($imageData);
-$imageDataDecoded = imagecreatefromstring($imageDataDecoded);
 
 $image = new Imagick();
 $image->setImageFormat('png');
-$image->readImageBlob($imageData);
+$image->readImageBlob($imageDataDecoded);
 
 $image -> blurImage(5, 3);
 $image -> borderImage('black', 5, 5);

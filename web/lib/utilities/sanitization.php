@@ -1,28 +1,17 @@
 <?php 
-
 function int_sanitization($input){
-    $input = (int)htmlspecialchars($input);
-    return filter_var($input, FILTER_VALIDATE_INT);
+    return (int)$input;
 }
 
 function float_sanitization($input){
-    $input = (float)htmlspecialchars($input);
-    return filter_var($input, FILTER_VALIDATE_FLOAT);
+    return (float)$input;
 }
 
 function string_sanitization($input){
-    $input = (String)htmlspecialchars($input);
-    return filter_var($input, FILTER_SANITIZE_STRING);
+    return (string) htmlspecialchars($input, ENT_QUOTES);
 }
 
 function email_sanitization($input){
-    $input = (String)htmlspecialchars($input);
-    return filter_var($input, FILTER_VALIDATE_EMAIL);
+    return (string) filter_var($input, FILTER_VALIDATE_EMAIL);
 }
-
-function password_sanitization($input){
-    $input = (String)htmlspecialchars($input);
-    return filter_var($input, FILTER_SANITIZE_EMAIL);
-}
-
 ?>

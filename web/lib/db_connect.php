@@ -18,17 +18,18 @@ function db_connect() {
 
 function db_test(){
     try {
+        global $conn;
         $conn = db_connect();
         if ($conn instanceof PDOException) {
-            echo "<p>Unable to connect to the database: " . $conn->getMessage() . "</p>";
+            return "<p>Unable to connect to the database: " . $conn->getMessage() . "</p>";
         }
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->query('SELECT version()');
         $version = $stmt->fetchColumn();
-        echo "<p>Successfully connected to the Database. Version: " . $version . "</p>";
+        return "<p>Successfully connected to the Database. Version: " . $version . "</p>";
     
     } catch(PDOException $e) {
-        echo "<p>Error in query: " . $e->getMessage() . "</p>";
+        return "<p>Error in query: " . $e->getMessage() . "</p>";
     }
 }
 ?>

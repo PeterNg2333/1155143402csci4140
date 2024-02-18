@@ -105,7 +105,7 @@ function csci4140_fetch_ten_image(){
     }
     $result = $query->fetchAll()[0];
     header('Content-type: ' . $result['filetype']);
-    echo $result['img'];
+    echo base64_decode($result['img']);
     exit();
 }
                                                      

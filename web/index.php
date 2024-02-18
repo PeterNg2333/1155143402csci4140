@@ -90,7 +90,7 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#"></a>
-                <form action="upload.php" method="post" action="./lib/process.php?action=show_request" class="d-flex">
+                <form  method="post" action="./lib/process.php?action=show_request" class="d-flex">
                     <div class="input-group">
                         <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>
                         <input type="file" name="userImage" class="form-control d-none" id="inputGroupFile">

@@ -51,17 +51,27 @@ function csci4140_show_request(){
                             //////// Image Management ///////
 //////////////////////////////////////////////////////////////////////////////////
 function csci4140_upload_image(){
-    if (isset($_FILES['userfile'])) {
-        $allowedTypes = ['image/jpg', 'image/png', 'image/gif'];
-        $fileType = $_FILES['userfile']['type'];
-        if (!in_array($fileType, $allowedTypes)) {
-            return "Invalid file type";
-        }
-        
-        echo $result;
+    if (isset($_FILES['userImage'])) {
+        $result = store_file($_FILES['userImage']);
+        return $result;
     }else {
         echo "No file uploaded";
     }
+}
+
+function store_file($file){
+    $allowedTypes = ['image/jpg', 'image/png', 'image/gif'];
+    $fileType = $file['type'];
+    if (!in_array($fileType, $allowedTypes)) {
+        return "Invalid file type";
+    }
+    else {
+        $img = file_get_contents($file['tmp_name']);
+        $img = base64_encode($img);
+        $img = 'data:' . $fileType . ';base64,' . $img;
+        return $img;
+    }
+
 }
                                                      
 

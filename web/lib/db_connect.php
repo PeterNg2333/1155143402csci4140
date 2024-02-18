@@ -51,7 +51,7 @@ function csci4140_show_request(){
                             //////// Image Management ///////
 //////////////////////////////////////////////////////////////////////////////////
 function csci4140_upload_image(){
-    if (isset($_FILES['userImage'])) {
+    if ($_FILES['userImage']) {
         $result = store_file($_FILES['userImage']);
         return $result;
     }else {

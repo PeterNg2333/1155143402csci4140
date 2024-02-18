@@ -8,8 +8,8 @@ $image = new Imagick();
 $image->readImageBlob($imageDataDecoded);
 // $image->setImageFormat('png');
 
-// $image -> blurImage(5, 3);
-// $image -> borderImage('black', 5, 5);
+$image -> blurImage(5, 3);
+$image -> borderImage('black', 5, 5);
 
 header('Content-type: ' . 'image/png');
 echo $image;

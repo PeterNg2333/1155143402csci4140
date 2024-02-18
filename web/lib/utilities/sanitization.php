@@ -8,10 +8,12 @@ function float_sanitization($input){
 }
 
 function string_sanitization($input){
+    $input = (string) $input;
     return (string) htmlspecialchars($input, ENT_QUOTES);
 }
 
 function email_sanitization($input){
+    $input = (string) $input;
     return (string) filter_var($input, FILTER_VALIDATE_EMAIL);
 }
 ?>

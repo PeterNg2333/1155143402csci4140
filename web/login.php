@@ -12,10 +12,10 @@
           <form class="mx-auto" method="POST" action="">
               <h3 class="text-center mx-auto mb-4 loginHeader" style="font-weight: bold;"> SIGN IN TO YOUR ACCOUNT</h3>
               <div class="form-outline text-center  mb-4 mx-auto">  
-                  <input style="width: 250px;" id="username" name="username" placeholder="User name (Don't use $, @, ', &quot;, =, &, |])" required type="text" pattern="[^$@'&quot;=&|]+"/>
+                  <input style="width: 250px;" id="username" name="username" placeholder="UserName (exclude $@'&quot;=&|)" required type="text" pattern="[^$@'&quot;=&|]+"/>
               </div> 
               <div class="form-outline text-center  mb-4 mx-auto"> 
-                  <input style="width: 250px;" type="password" id="password" name="password  (Don't use $, @, ', &quot;, =, &, |])" placeholder="Password" pattern="[^$@'&quot;=&|]+" required/>
+                  <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password (exclude $@'&quot;=&|)" pattern="[^$@'&quot;=&|]+" required/>
               </div>
 
               <!-- CSRF -->

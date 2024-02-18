@@ -81,17 +81,30 @@ function store_file($file){
         if ($is_public == "on"){
             $flag = 1;
         }
-        $query = $conn->prepare('INSERT INTO myimage(name, img, filetype, flag, creator) VALUES (?, ?, ?, ?, ?);');
+        $query = $conn->prepare('INSERT INTO myimage(name, filetype, flag, creator) VALUES (?, ?, ?, ?);');
         $query -> bindParam(1, $name);
-        $query -> bindParam(2, $img, PDO::PARAM_LOB);
         $query -> bindParam(3, $fileType);
         $query -> bindParam(4, $flag);
         $query -> bindParam(5, $creator);
         $query->execute();
         $imageId = $conn->lastInsertId();
+        if ($fileType == "image/png"){
+            $fileType = ".png";
+        } else if ($fileType == "image/jpg"){
+            $fileType = ".jpg";
+        } else if ($fileType == "image/gif"){
+            $fileType = ".gif";
+        }
+        $file_name = $imageId . "-" . $name  . $fileType;
+        $uploadResult = move_uploaded_file($file['tmp_name'], "../images/" . $file_name);
+        if (!$uploadResult) {
+            return "Error in uploading the file";
+        }
         return "Successfully uploaded the image with ID: " . $imageId;
     }
 }
+
+
 
 function csci4140_fetch_ten_image(){
     global $conn;

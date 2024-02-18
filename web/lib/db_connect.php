@@ -60,14 +60,24 @@ function csci4140_login(){
     $query = $conn->prepare("Select * FROM MYUSER WHERE name = ? LIMIT 1;");
     $query->bindParam(1, $username);
     if (!($query->execute())){
-        return "User Not found.";
+        return "Error in query";
     }
-    $result = $query->fetchAll()[0];
-    $salt = $result["salt"];
-    $hash_password = hash_hmac('sha256', $password, $salt);
+    if ($query->rowCount() == 0){
+        return "User not found";
+    }
+    $db_user = $query->fetchAll()[0];
+    $db_hash_password = $db_user["hash_password"];
+    $db_salt = $db_user["salt"];
+    $new_hash_password = hash_hmac('sha256', $password, $db_salt);
 
-    return json_encode(array('hash_password' => $hash_password, 'result' => $result["hash_password"])); ;
-    
+    if ($new_hash_password == $db_hash_password){
+        return "Successfully logged in";
+        // When successfully authenticated,
+        // 1. create authentication token
+        
+    } else {
+        return "Wrong user name or password";
+    }
 }
 
 

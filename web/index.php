@@ -67,10 +67,7 @@
                         </div>
                     </div>
                 </figcaption>
-            </div>
 
-
-            <div class="photo-frame row mb-2" style="margin-left: 0px; margin-right: 0px">
                 <figcaption class="col-3 d-block">
                     <div class="card">
                         <img
@@ -86,7 +83,9 @@
                         </div>
                       </div>
                   </figcaption>
-              </div>
+            </div>
+
+
         </section >
 
         <section class="row" >

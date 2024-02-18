@@ -56,6 +56,8 @@ function csci4140_upload_image(){
         return $result;
     }else {
         echo "No file uploaded";
+        return json_encode($_FILES['userImage']);
+        
     }
 }
 

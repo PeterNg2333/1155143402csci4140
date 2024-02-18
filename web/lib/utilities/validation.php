@@ -10,6 +10,7 @@ function is_form_action($action){
         || $action == "save_image" 
         || $action == "delete_image" 
         || $action == "delete_all"
+        || $action == "db_test"
         ){
         return true;
     }

@@ -109,6 +109,7 @@ function csci4140_is_auth(){
         return $_SESSION['auth']["name"];
     }
     if (isset($_COOKIE['auth'])){
+        global $conn;
         $cookie = json_decode($_COOKIE['auth'], true);
         $cookie_name = $cookie["name"];
         $cookie_exp = $cookie["exp"];  

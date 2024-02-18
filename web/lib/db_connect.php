@@ -87,14 +87,7 @@ function store_file($file){
         $query -> bindParam(4, $creator);
         $query->execute();
         $imageId = $conn->lastInsertId();
-        if ($fileType == "image/png"){
-            $fileType = ".png";
-        } else if ($fileType == "image/jpg"){
-            $fileType = ".jpg";
-        } else if ($fileType == "image/gif"){
-            $fileType = ".gif";
-        }
-        $file_name = $imageId . "-" . $name  . $fileType;
+        $file_name = $imageId . "-" . $name;
         $uploadResult = move_uploaded_file($file['tmp_name'], "../images/" . $file_name);
         if (!$uploadResult) {
             return "Error in uploading the file";

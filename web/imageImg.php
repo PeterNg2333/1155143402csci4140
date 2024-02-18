@@ -13,10 +13,6 @@ $image->readImageBlob($imageData);
 
 $image -> blurImage(5, 3);
 $image -> borderImage('black', 5, 5);
-// 輸出圖像資料
-imagepng($image);
-
-// 釋放圖像資源
-imagedestroy($image);
+echo $image;
 
 ?>

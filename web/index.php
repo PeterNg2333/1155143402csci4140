@@ -25,12 +25,12 @@
                         $auth = is_auth();
                         if ($auth){
                             if (is_admin($auth)){
-                                echo "Admin</button>";
+                                echo $auth."</button>";
                                 echo '<a href="./initialization.php" class="btn btn-danger"> Init </a>';
                                 echo '<div> &nbsp; </div>';
                             }
                             else 
-                                echo "Normal User</button>"; 
+                                echo $auth."</button>"; 
                             echo '<button type="submit" class="btn btn-outline-success">Exit</button>';
                         } else {
                             echo "Guest";

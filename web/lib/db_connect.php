@@ -60,18 +60,35 @@ function csci4140_upload_image(){
 }
 
 function store_file($file){
+    global $conn;
     $allowedTypes = ['image/jpg', 'image/png', 'image/gif'];
     $fileType = $file['type'];
     if (!in_array($fileType, $allowedTypes)) {
         return "Invalid file type";
     }
     else {
+        $conn = db_connect();
+        if ($conn instanceof PDOException) {
+            return "Unable to connect to the database: " . $conn->getMessage();
+        }   
         $img = file_get_contents($file['tmp_name']);
-        $img = base64_encode($img);
-        $img = 'data:' . $fileType . ';base64,' . $img;
-        return $img;
+        $name = validate_input(string_sanitization($file['name']), '/^[\w\- ]+$/', "invalid-filename");
+        $creator = get_id_from_username(is_auth());
+        $is_public = validate_input(string_sanitization($_POST["isPublic"]), '/^[\w\- ]+$/', "invalid-flag");
+        $flag = 0;
+        if ($is_public == "on"){
+            $flag = 1;
+        }
+        $query = $conn->prepare('INSERT INTO myimage(name, img, filetype, flag, creator) VALUES (?, ?, ?, ?, ?);');
+        $query -> bindParam(1, $name);
+        $query -> bindParam(2, $img, PDO::PARAM_LOB);
+        $query -> bindParam(3, $fileType);
+        $query -> bindParam(4, $flag);
+        $query -> bindParam(5, $creator);
+        $query->execute();
+        $imageId = $conn->lastInsertId();
+        return "Successfully uploaded the image with ID: " . $imageId;
     }
-
 }
                                                      
 
@@ -93,7 +110,8 @@ function csci4140_login(){
         return "Error in query";
     }
     if ($query->rowCount() == 0){
-        return "User not found";
+        echo "User not found, go back to <a href='../index.php'></a>";
+        exit();
     }
     $db_user = $query->fetchAll()[0];
     $db_hash_password = $db_user["hash_password"];
@@ -111,7 +129,8 @@ function csci4140_login(){
         $_SESSION['auth'] = $token;
         session_regenerate_id();
     } else {
-        return "Wrong user name or password";
+        echo "Wrong user name or password, go back to <a href='../index.php'></a>";
+        exit();
     }
 
     // 2. redirect to page 
@@ -195,6 +214,24 @@ function is_admin($username){
     else{
         return false;
     }
+}
+
+function get_id_from_username($username){
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("Select id FROM MYUSER WHERE name = ? LIMIT 1;");
+    $query->bindParam(1, $username);
+    if (!($query->execute())){
+        return "Error in query";
+    }
+    if ($query->rowCount() == 0){
+        return "User not found";
+    }
+    $db_user = $query->fetchAll()[0];
+    return $db_user["id"];
 }
 
 // function csci4140_create_pd(){

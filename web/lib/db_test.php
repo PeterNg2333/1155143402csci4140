@@ -33,13 +33,13 @@ try {
 
 
     CREATE TABLE MyUser(
-    id INT AUTO_INCREMENT PRIMARY KEY, 
+    id SERIAL PRIMARY KEY, 
     Name VARCHAR(80) NOT NULL, 
     hash_password VARCHAR(200), 
     SALT VARCHAR(80) NOT NULL,
     FLAG INTEGER NOT NULL
 );
-    Create Table MyImage(img_id INT Primary Key, Name Varchar Not Null, img bytea, filetype Text, FLAG INTEGER NOT NULL, creator INT NOT NULL references MyUser(id))
+    Create Table MyImage(img_id SERIAL Primary Key, Name Varchar Not Null, img bytea, filetype Text, FLAG INTEGER NOT NULL, creator INT references MyUser(id))
 
 
 -->

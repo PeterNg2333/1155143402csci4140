@@ -104,7 +104,7 @@ function retrieve_image(){
         return "Error in query";
     }
     $result = $query->fetchAll()[0];
-    return base64_decode($result['img']);
+    return $result['img'];
 }
 
 function csci4140_fetch_ten_image(){

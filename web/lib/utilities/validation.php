@@ -1,5 +1,12 @@
 <?php 
 
+
+function validate_input($username, $reg, $error_message){
+    if (!preg_match('/[^$@\'&"=|]+/', $username))
+        throw new Exception($error_message);
+    else 
+        return $username;
+}
 function is_form_action($action){
     if ($action == "create_pd" 
         || $action == "login" 

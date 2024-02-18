@@ -29,7 +29,7 @@
           </form>
           <br>
           <br>
-          <form class="form-outline text-center mb-4 mx-auto" method="POST" action="./lib/process.php?action=show_request">
+          <form class="form-outline text-center mb-4 mx-auto" method="POST" action="./lib/process.php?action=create_pd">
               <input style="width: 250px;" id="username" name="username" placeholder="User name (Don't use $, @, ', &quot;, =, &, |])" required type="text" pattern="[^$@'&quot;=&|]+"/>
               <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password" pattern="[^$@'&quot;=&|]+" required/>
               <button type = "submit" > Create pw </a>

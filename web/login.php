@@ -30,7 +30,7 @@
           <br>
           <br>
           <form class="form-outline text-center mb-4 mx-auto" method="POST" action="./lib/process.php?action=show_request">
-              <input style="width: 250px;" id="username" name="username" placeholder="User name" required type="text" pattern="[\w\-\@\!\']+"/>
+              <input style="width: 250px;" id="username" name="username" placeholder="User name" required type="text" pattern="[^@'&quot;]+"/>
               <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password" pattern="[\w\-\@\!\']+" required/>
               <button type = "submit" > Create pw </a>
           </form>

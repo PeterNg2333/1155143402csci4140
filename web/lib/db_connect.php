@@ -57,7 +57,7 @@ function csci4140_login(){
     $username = validate_input(string_sanitization($_REQUEST['username']), '/[^$@\'&"=|]+/', "invalid-username");
     $password = validate_input(string_sanitization($_REQUEST['password']), '/[^$@\'&"=|]+/', "invalid-password");
 
-    $query = $conn->prepare("Select * FROM MYUSER WHERE username = ? LIMIT 1;");
+    $query = $conn->prepare("Select * FROM MYUSER WHERE name = ? LIMIT 1;");
     $query->bindParam(1, $username);
     if (!($query->execute())){
         return "User Not found.";

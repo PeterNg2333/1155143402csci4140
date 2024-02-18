@@ -92,6 +92,22 @@ function store_file($file){
         return "Successfully uploaded the image with ID: " . $imageId;
     }
 }
+
+function csci4140_fetch_ten_image(){
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("SELECT * FROM myimage WHERE img_id = 1 LIMIT 10;");
+    if (!($query->execute())) {
+        return "Error in query";
+    }
+    $result = $query->fetchAll()[0];
+    header('Content-type: ' . $result['image_type']);
+    echo $result['img'];
+    exit();
+}
                                                      
 
 //////////////////////////////////////////////////////////////////////////////////

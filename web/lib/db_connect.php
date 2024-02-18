@@ -64,10 +64,10 @@ function csci4140_create_pd(){
     $hash_password = hash_hmac('sha256', $password, $salt);
 
     $query = $conn->prepare('INSERT INTO myuser(name, hash_password, salt, flag) VALUES (?, ?, ?, ?);');
-    $query -> bindColumn(1, $username);
-    $query -> bindColumn(2, $hash_password);
-    $query -> bindColumn(3, $salt);
-    $query -> bindColumn(4, $flag);
+    $query -> bindParam(1, $username);
+    $query -> bindParam(2, $hash_password);
+    $query -> bindParam(3, $salt);
+    $query -> bindParam(4, $flag);
 
     if ($query->execute()) {
         return "Successfully created the accound for " . $username;

@@ -57,10 +57,6 @@ function csci4140_create_pd(){
     $username = validate_input(string_sanitization($_REQUEST['username']), '/[^$@\'&"=|]+/', "invalid-username");
     $password = validate_input(string_sanitization($_REQUEST['password']), '/[^$@\'&"=|]+/', "invalid-password");
     $flag = 0;
-    if (strpos($username, "user"))
-        $flag = 0;
-    else
-        $flag = 1;
     $salt = random_int(0, PHP_INT_MAX);
     $hash_password = hash_hmac('sha256', $password, $salt);
 

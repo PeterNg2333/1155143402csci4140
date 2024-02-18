@@ -26,7 +26,7 @@
                         if ($auth){
                             if (is_admin($auth)){
                                 echo "Admin</button>";
-                                echo '<a href="./initialization.php" class="btn btn-outline-danger"> Init </button>';
+                                echo '<a href="./initialization.php" class="btn btn-danger"> Init </a>';
                             }
                             else 
                                 echo "Normal User</button>"; 

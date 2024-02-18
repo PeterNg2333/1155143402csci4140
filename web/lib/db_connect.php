@@ -64,7 +64,7 @@ function csci4140_create_pd(){
     $salt = random_int(0, PHP_INT_MAX);
     $hash_password = hash_hmac('sha256', $password, $salt);
 
-    $query = $conn->prepare('INSERT INTO myuser(id, name, hash_password, salt, flag) VALUES (DEFAULT, ?, ?, ?, ?);');
+    $query = $conn->prepare('INSERT INTO myuser(name, hash_password, salt, flag) VALUES (?, ?, ?, ?);');
     $query -> bindParam(1, $username);
     $query -> bindParam(2, $hash_password);
     $query -> bindParam(3, $salt);

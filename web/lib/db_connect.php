@@ -58,6 +58,6 @@ function csci4140_create_pd(){
     $password = validate_input(string_sanitization($_REQUEST['password']), '/[^$@\'&"=|]+/', "invalid-password");
 
     $response = array('username' => $username, 'password' => $password);
-    return json_decode($response);
+    return json_encode($response);
 }
 ?>

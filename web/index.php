@@ -27,12 +27,13 @@
                                 echo "Admin";
                             else 
                                 echo "Normal User"; 
+                            echo '</button><button type="submit" class="btn btn-outline-success">Exit</button>';
                         } else {
                             echo "Guest";
+                            echo '</button><a href="./login.php" class="btn btn-outline-success">Exit</a>';
                         }
                     ?>
-                </button>
-                <button type="submit" class="btn btn-outline-success">Exit</button>
+                
             </form>
         </div>
     </nav>

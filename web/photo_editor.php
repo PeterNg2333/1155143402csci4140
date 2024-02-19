@@ -44,15 +44,9 @@
             
                 <figcaption class="col-7 d-block">
                     <div class="card">
-                        <?php 
-                                                        echo $_GET['img_id'];
-                                                        echo $_GET['filter'];
-                                                        echo '<div> a </div>';
-                        ?>
                         <img
                             src=
                             <?php
-
                             if (isset($_GET['img_id']) && isset($_GET['filter'])){
                                 $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
                                 $filter = validate_input(int_sanitization($_GET['filter'] ), '/^\w+$/', "invalid-filter");
@@ -91,7 +85,7 @@
                                 <a href= <?php echo "'./photo_editor.php?filter=border&img_id=". $img_id."'"; ?>class="btn btn-sm btn-primary"> Add Border</a>
                             </div></div>
                             <div class="col-5"><div class="row px-1">
-                                <a href= <?php echo "'./photo_editor.php??filter=border&img_id=". $img_id."'"; ?>class="btn btn-sm btn-primary"> Black & White</a>
+                                <a href= <?php echo "'./photo_editor.php?filter=blackNwhite&img_id=". $img_id."'"; ?>class="btn btn-sm btn-primary"> Black & White</a>
                             </div></div>
                         </div>
                     </form>

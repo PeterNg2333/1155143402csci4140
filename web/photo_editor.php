@@ -50,7 +50,7 @@
                             if (isset($_GET['img_id']) && isset($_GET['filter'])){
                                 $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
                                 $filter = validate_input(int_sanitization($_GET['filter'] ), '/^\d+$/', "invalid-filter");
-                                echo "./lib/edited_image.php?img_id=". $img_id."&filter=".$filter;
+                                echo "./lib/edited_image.php?filter=".$filter. "&img_id=". $img_id;
                             } else if (isset($_GET['img_id'])){
                                 $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
                                 echo "./lib/image.php?img_id=". $img_id;
@@ -81,10 +81,10 @@
                         <div class="row m-1"> 
                             <span class="align-middle col-2">Filter: </span>
                             <div class="col-5"><div class="row px-1">
-                                <a href= <?php echo "'./photo_editor.php?img_id=". $img_id."&filter=border'"; ?>class="btn btn-sm btn-primary"> Add Border</a>
+                                <a href= <?php echo "'./photo_editor.php?filter=border&img_id=". $img_id."'"; ?>class="btn btn-sm btn-primary"> Add Border</a>
                             </div></div>
                             <div class="col-5"><div class="row px-1">
-                                <a href= <?php echo "'./photo_editor.php?img_id=". $img_id."&filter=blackNwhite'"; ?>class="btn btn-sm btn-primary"> Black & White</a>
+                                <a href= <?php echo "'./photo_editor.php??filter=border&img_id=". $img_id."'"; ?>class="btn btn-sm btn-primary"> Black & White</a>
                             </div></div>
                         </div>
                     </form>

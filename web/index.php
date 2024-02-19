@@ -73,7 +73,6 @@
                     else 
                         $images = (array) fetch_ten_public_image($start, $length);
                     $image = (array) array_splice($images, $start, $length);
-                    echo json_encode($image);
                     foreach ($images as $image){
                         
                         if ($image["flag"]== 1)
@@ -92,7 +91,7 @@
                         echo '        </div>';
                         echo '    </div>';
                         echo '</figcaption>';
-                } 
+                }
             } catch (Exception $e) {
                 echo '<div class="alert alert-danger" role="alert">';
                 echo '    <strong>Error!</strong> '.$e->getMessage();

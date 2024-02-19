@@ -73,6 +73,7 @@
                     else 
                         $res = (array) fetch_ten_public_image($start, $length);
                     $res = fetch_ten_public_image($start, $length);
+                    echo json_encode($res);
                     $res = (array) array_slice($res, $start, $length);
                         foreach ($res as $image){
                             echo '<figcaption class="col-3 d-block mb-2">';

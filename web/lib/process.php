@@ -14,6 +14,7 @@ if (empty($process_action)
         exit();
     }else{
         try{
+            $is_login = is_auth()
             if (($return_value = call_user_func('csci4140_' . $process_action)) === false) {
                 if ($conn && $conn->errorCode()) {
                     echo json_encode(array('failed'=>'error-db'));

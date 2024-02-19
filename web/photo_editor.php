@@ -84,7 +84,11 @@
                                 <span class="card-title col-8 align-middle">Card title </span>
                                 <div class="col-2">
                                     <form class="row px-1">
-                                        <button href="#!" class="btn btn-sm btn-danger">Discard</button>
+                                        <a href=
+                                        <?php
+                                            echo "'./lib/process.php?action=delete_image&img_id=".$img_id."'";
+                                        ?>
+                                         class="btn btn-sm btn-danger">Discard</a>
                                     </form>
                                 </div>
                                 <div class="col-2">
@@ -93,10 +97,7 @@
                                         <?php
 
                                         if (isset($_GET['img_id']) && isset($_GET['filter'])){
-                                            $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
-                                            $filter = validate_input(string_sanitization($_GET['filter'] ), '/^\w+$/', "invalid-filter");
                                             echo "'./lib/process.php?action=finish_edit&filter=". $filter."&img_id=".$img_id."'";
-                                            
                                         } else 
                                             echo "'./index.php'";
                                         

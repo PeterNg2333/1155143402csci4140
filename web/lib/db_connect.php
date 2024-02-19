@@ -48,6 +48,51 @@ function csci4140_show_request(){
     return json_encode($_REQUEST);
 }
 
+function csci4140_delete_image(){
+    if (isset($_GET['img_id'])){
+        $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
+    } else {
+        return "No image id provided";
+    }
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("DELETE FROM myimage WHERE img_id = ?;");
+    $query->bindParam(1, $img_id);
+    if (!($query->execute())) {
+        return "Error in query";
+    }
+    header('Location: ../index.php', true, 302);
+    return "Successfully deleted the image";
+}
+function csci4140_init_all(){
+
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("DROP TABLE IF EXISTS myimage;");
+    if (!($query->execute())) {
+        return "Error in query";
+    }
+    $query = $conn->prepare("CREATE TABLE myimage(
+        img_id SERIAL PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        img BYTEA NOT NULL,
+        filetype VARCHAR(100) NOT NULL,
+        flag INT NOT NULL,
+        creator INT NOT NULL,
+        FOREIGN KEY (creator) REFERENCES myuser(id)
+    );");
+    if (!($query->execute())) {
+        return "Error in query";
+    }
+    return "Successfully initialized the website, you can go back to the <a href='../index.php'> index.php </a>";
+}
+
 //////////////////////////////////////////////////////////////////////////////////
                             //////// Image Management ///////
 //////////////////////////////////////////////////////////////////////////////////

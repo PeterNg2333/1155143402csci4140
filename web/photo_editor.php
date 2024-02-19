@@ -95,7 +95,7 @@
                                         if (isset($_GET['img_id']) && isset($_GET['filter'])){
                                             $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
                                             $filter = validate_input(string_sanitization($_GET['filter'] ), '/^\w+$/', "invalid-filter");
-                                            echo "'./lib/process.php?action=finish_edit?filter=". $filter."&img_id=".$img_id."'";
+                                            echo "'./lib/process.php?action=finish_edit&filter=". $filter."&img_id=".$img_id."'";
                                             
                                         } else 
                                             "./index.php";

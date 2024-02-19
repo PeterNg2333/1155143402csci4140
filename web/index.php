@@ -149,7 +149,7 @@
                             if ($previous < 0){
                                 $previous = 0;
                             }
-                            echo '"./index.php?start='.($start).'"';
+                            echo '"./index.php?start='.($previous).'"';
                         ?>
                         tabindex="-1" aria-disabled="true">&laquo; Previous</a>
                     </li>
@@ -157,7 +157,6 @@
                         <?php 
                             echo ($start+8);
                             echo " of ";
-                            echo $auth ;
                             if ($auth){
                                 $count = count_image($auth);
                             } else {

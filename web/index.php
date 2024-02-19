@@ -54,6 +54,7 @@
         <section class="row">
             <div class="photo-frame row mb-2" style="margin-left: 0px; margin-right: 0px">
                 <?php
+                try {
                     if (isset($_GET['start'])){
                         $start = (int) $_GET['start'];
                     } else {
@@ -87,49 +88,11 @@
                             echo '    </div>';
                             echo '</figcaption>';
                         }
-            //     try {  
-            //         if (isset($_GET['start'])){
-            //             $start = (int) $_GET['start'];
-            //         } else {
-            //             $start = 0;
-            //         }
-            //         if (isset($_GET['len'])){
-            //             $length = (int) $_GET['len'];
-            //         } else {
-            //             $length = 9;
-            //         }
-            //         $username =  $auth;
-            //         $userid = get_userid_from_username($username);
-            //         if ($auth){
-            //             $images = (array) fetch_ten_image_auth($start, $length, $username);
-            //         }
-            //         else 
-            //             $images = (array) fetch_ten_public_image($start, $length);
-            //         $image = (array) array_slice($images, $start, $length);
-            //         foreach ($images as $image){
-                        
-            //             if ($image["flag"]== 1)
-            //                 $creation_source = "Public image";
-            //             else 
-            //                 $creation_source = "Private image";
-            //             $img_id = $image["img_id"];
-            //             echo '<figcaption class="col-3 d-block">';
-            //             echo '    <div class="card">';
-            //             echo '        <img src="./lib/image.php?img_id='.$img_id.'" class="card-img-top" alt="Sunset over the Sea"/>';
-            //             echo '        <div class="card-body container py-2">';
-            //             echo '            <div class="row">';
-            //             echo '                <span class="card-title col-8">'.$creation_source."-".$img_id.'</span>';
-            //             echo '                <a href="'."./lib/image.php?img_id=". $img_id.'"class="btn btn-sm btn-secondary col-4">Edit</a>';
-            //             echo '            </div>';
-            //             echo '        </div>';
-            //             echo '    </div>';
-            //             echo '</figcaption>';
-            //     }
-            // } catch (Exception $e) {
-            //     echo '<div class="alert alert-danger" role="alert">';
-            //     echo '    <strong>Error!</strong> '.$e->getMessage();
-            //     echo '</div>';
-            // }
+                } catch (Exception $e) {
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo '    <strong>Error!</strong> '.$e->getMessage();
+                    echo '</div>';
+                }
             ?>  
 
 

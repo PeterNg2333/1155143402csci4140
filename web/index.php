@@ -73,7 +73,7 @@
                         foreach ($res as $image){
                             echo '<figcaption class="col-3 d-block mb-2">';
                             echo '    <div class="card w-100 h-100">';
-                            echo '        <img src="./lib/image.php?img_id='.$image['img_id'].'" class="card-img-top" alt="Sunset over the Sea"/>';
+                            echo '        <img src="./lib/image.php?img_id='.$image['img_id'].'" class="card-img-top h-100" alt="Sunset over the Sea"/>';
                             echo '        <div class="card-body container py-2">';
                             echo '            <div class="row">';
                             echo '                <span class="card-title col-8">'.$image['img_id'].'</span>';

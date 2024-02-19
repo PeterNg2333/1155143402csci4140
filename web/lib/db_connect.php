@@ -111,10 +111,11 @@ function get_binimage_from_id($id){
         return "Error in query";
     }
     $result = $query->fetchAll()[0];
-    header('Content-type: ' . $result['filetype']);
     return $result['img'];
 
 }
+
+
 
 function retrieve_image(){
     if (isset($_GET['img_id'])){
@@ -212,7 +213,7 @@ function csci4140_finish_edit(){
         return "Error in query";
     }
     header('Location: ../index.php', true, 302);
-    return "Successfully edited the image with ID: " . $img_id;
+    
 
 
 }

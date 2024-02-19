@@ -76,7 +76,7 @@
                         foreach ($res as $image){
                             $flag = $image["flag"];
                             if ((int) $flag == 0){
-                                $flag = "Private image created by You";
+                                $flag = "Private image";
                             }
                             else {
                                 $flag = "Public image";
@@ -86,7 +86,7 @@
                             echo '        <img src="./lib/image.php?img_id='.$image['img_id'].'" class="card-img-top h-100" alt="Sunset over the Sea"/>';
                             echo '        <div class="card-body container py-2">';
                             echo '            <div class="row">';
-                            echo '                <span class="card-title col-8">'.$image['img_id']."-".$flag.'</span>';
+                            echo '                <span class="card-title col-8">'.$image['img_id'].'</span>';
                             echo '                <a href="'."./photo_editor.php?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
                             echo '            </div>';
                 

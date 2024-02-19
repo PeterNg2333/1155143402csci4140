@@ -158,9 +158,7 @@ function fetch_ten_public_image($start, $length){
     if (!($query->execute())) {
         return "Error in query";
     }
-    $result = $query->fetchAll();
-    $result_array = array_slice($result, $start, $length);
-    return is_array($result_array);
+    return $query->fetchAll();
 }
 
 function fetch_ten_image_auth($start, $length, $username){
@@ -177,9 +175,7 @@ function fetch_ten_image_auth($start, $length, $username){
     if (!($query->execute())) {
         return "Error in query";
     }
-    $result = $query->fetchAll();
-    $result_array = array_slice($result, $start, $length);
-    return $result_array;
+    return $query->fetchAll();
 
 }
                                                      

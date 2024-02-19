@@ -73,7 +73,6 @@
                     else 
                         $images = (array) fetch_ten_public_image($start, $length);
 
-                    echo is_array($images);
                     
                     foreach ($images as $image){
                         if ($image["flag"]== 1){

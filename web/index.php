@@ -1,5 +1,6 @@
 <?php
         require __DIR__.'/lib/db_connect.php';
+        $auth = is_auth();
 ?> 
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@
             <form class="d-flex" method="POST" action="./lib/process.php?action=logout">
                 <button class="btn btn-outline-light text-dark" disabled>
                     <?php
-                        $auth = is_auth();
+                        
                         if ($auth){
                             if (is_admin($auth)){
                                 echo $auth."</button>";
@@ -54,9 +55,17 @@
             <div class="photo-frame row mb-2" style="margin-left: 0px; margin-right: 0px">
                 <?php
                 try {  
-                    $start = (int) $_GET['start'] ?? 0;
-                    $length = (int) $_GET['len'] ?? 10;
-                    $username =  $is_auth;
+                    if (isset($_GET['start'])){
+                        $start = (int) $_GET['start'];
+                    } else {
+                        $start = 0;
+                    }
+                    if (isset($_GET['len'])){
+                        $length = (int) $_GET['len'];
+                    } else {
+                        $length = 9;
+                    }
+                    $username =  $auth;
                     $userid = get_userid_from_username($username);
                     if ($auth){
                         $images = fetch_ten_image_auth($start, $length, $username);

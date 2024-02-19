@@ -86,7 +86,7 @@
                             echo '        <img src="./lib/image.php?img_id='.$image['img_id'].'" class="card-img-top h-100" alt="Sunset over the Sea"/>';
                             echo '        <div class="card-body container py-2">';
                             echo '            <div class="row">';
-                            echo '                <span class="card-title col-8">'.$image['img_id'].'</span>';
+                            echo '                <span class="card-title col-8">'.$image['img_id']."-".$flag.'</span>';
                             echo '                <a href="'."./photo_editor.php?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
                             echo '            </div>';
                 
@@ -112,15 +112,16 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-end">
                     <li class="page-item">
-                        <a class="page-link" href=
+                        <a href=
                         <?php 
                             $previous = $start-8;
                             if ($previous < 0){
                                 $previous = 0;
                             }
                             echo '"./index.php?start='.($previous).'"';
+                            echo 'class="page-link ';
                             if ((int) $previous == 0){
-                                echo 'class="page-link disabled"';
+                                echo 'disabled"';
                             }
                         ?>
                         tabindex="-1" aria-disabled="true">&laquo; Previous</a>
@@ -134,7 +135,7 @@
                                 $count = count_image("guest");
                             }
                             if ($next >= $count){
-                                $next = $count;
+                                $next = $next-8;
                             }
                             echo $start+1 . " - " . $next . " of ";
                             echo $count;
@@ -142,11 +143,12 @@
                         ?>
                     </a></li>
                     <li class="page-item">
-                        <a class="page-link" href=
+                        <a href=
                         <?php 
                             echo '"./index.php?start='.($next).'"'; 
-                            if ($start+8 >= $count){
-                                echo 'class="page-link disabled"';
+                            echo 'class="page-link ';
+                            if ((int) $start+8 >= (int) $count){
+                                echo 'disabled"';
                             }
                         ?>
                         >Next &raquo;</a>

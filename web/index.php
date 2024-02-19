@@ -157,8 +157,8 @@
                         <?php 
                             echo ($start+8);
                             echo " of ";
-                            echo $auth 
-                            echo count_image($auth)
+                            echo $auth ;
+                            echo count_image($auth);
                         ?>
                     <li class="page-item">
                         <a class="page-link" href=

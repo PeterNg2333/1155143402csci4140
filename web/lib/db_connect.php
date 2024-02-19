@@ -53,8 +53,8 @@ function csci4140_show_request(){
 //////////////////////////////////////////////////////////////////////////////////
 function csci4140_upload_image(){
     if (isset($_FILES['file'])) {
-        $result = store_file($_FILES['file']);
-        return $result;
+        $imageId = store_file($_FILES['file']);
+        header('Location: ../photo_editor.php?img_id='.$imageId, true, 302);
     }else {
         echo "No file uploaded";
         return json_encode($_FILES['file']);
@@ -95,7 +95,7 @@ function store_file($file){
         $query -> bindParam(5, $creator);
         $query->execute();
         $imageId = $conn->lastInsertId();
-        return "Successfully uploaded the image with ID: " . $imageId;
+        return $imageId;
     }
 }
 

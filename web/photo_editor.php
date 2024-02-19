@@ -1,3 +1,7 @@
+<?php 
+  require __DIR__.'/lib/db_connect.php';
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -45,7 +49,7 @@
                             <?php
                             if (isset($_GET['img_id'])){
                                 $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
-                                echo "./lib/image.php?img_id=". $_GET['img_id'];
+                                echo "./lib/image.php?img_id=". $img_id;
                             } else {
                                 echo "No image id provided";
                             }

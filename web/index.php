@@ -120,7 +120,7 @@
                             }
                             echo '"./index.php?start='.($previous).'"';
                             echo 'class="page-link ';
-                            if ((int) $previous == 0){
+                            if ((int) $start-8 < 0){
                                 echo 'disabled';
                             }
                             echo '"';

@@ -213,6 +213,7 @@ function csci4140_finish_edit(){
         return "Error in query";
     }
     header('Location: ../index.php', true, 302);
+    return "Successfully edited the image";
     
 
 

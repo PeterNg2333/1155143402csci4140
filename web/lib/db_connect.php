@@ -90,7 +90,7 @@ function csci4140_init_all(){
     if (!($query->execute())) {
         return "Error in query";
     }
-    return "Successfully initialized the website, you can go back to the <a href='../index.php'> index.php </a>";
+    return "<p>Successfully initialized the website, you can go back to the <a href='../index.php'> index.php </a></p>";
 }
 
 //////////////////////////////////////////////////////////////////////////////////

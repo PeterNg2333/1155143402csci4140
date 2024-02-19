@@ -90,7 +90,8 @@ function csci4140_init_all(){
     if (!($query->execute())) {
         return "Error in query";
     }
-    return "<p>Successfully initialized the website, you can go back to the <a href='../index.php'> index.php </a></p>";
+    echo "<p>Successfully initialized the website, you can go back to the <a href='../index.php'> index.php </a></p>";
+    exit();
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -348,7 +349,8 @@ function is_auth(){
             return "Error in query";
         }
         if ($query->rowCount() == 0){
-            return "<p> User not found, go back to <a href='../index.php'>index.php</a></p>";
+            echo "<p> User not found, go back to <a href='../index.php'>index.php</a></p>";
+            exit();
         }
         $db_user = $query->fetchAll()[0];
         $db_salt = $db_user["salt"];

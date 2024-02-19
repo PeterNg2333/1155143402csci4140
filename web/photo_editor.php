@@ -20,15 +20,32 @@
       // include('db_connect.php');
     ?>  -->
     
+<!--  /////////////////////////  Header  /////////////////////////  -->
     <nav class="navbar navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand fw-bold fst-italic" href="#">
+            <a class="navbar-brand fw-bold fst-italic" href="./index.php">
               <img src="Resources/Instagram_icon.png" alt="" width="24" height="24" class="d-inline-block align-text-top">
               Web Instagram
             </a>
-            <form class="d-flex">
-                <button class="btn btn-outline-light text-dark" disabled>Normal User</button>
-                <button class="btn btn-outline-success">Exit</button>
+            <form class="d-flex" method="POST" action="./lib/process.php?action=logout">
+                <button class="btn btn-outline-light text-dark" disabled>
+                    <?php
+                        
+                        if ($auth){
+                            if (is_admin($auth)){
+                                echo $auth."</button>";
+                                echo '<a href="./initialization.php" class="btn btn-danger"> Init </a>';
+                                echo '<div> &nbsp; </div>';
+                            }
+                            else 
+                                echo $auth."</button>"; 
+                            echo '<button type="submit" class="btn btn-outline-success">Exit</button>';
+                        } else {
+                            echo "Guest";
+                            echo '</button><a href="./login.php" class="btn btn-outline-primary">Login</a>';
+                        }
+                    ?>
+                
             </form>
         </div>
     </nav>

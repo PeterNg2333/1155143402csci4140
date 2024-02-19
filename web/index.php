@@ -16,7 +16,7 @@
     <!--  /////////////////////////  Header  /////////////////////////  -->
     <nav class="navbar navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand fw-bold fst-italic" href="#">
+        <a class="navbar-brand fw-bold fst-italic" href="./index.php">
               <img src="Resources/Instagram_icon.png" alt="" width="24" height="24" class="d-inline-block align-text-top">
               Web Instagram
             </a>

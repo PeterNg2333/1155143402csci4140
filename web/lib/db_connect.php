@@ -143,7 +143,7 @@ function fetch_ten_public_image($start, $length){
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("SELECT img_id, FLAGAs img FROM myimage WHERE FLAG = 1 img_id ASC Limit ?;");
+    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 img_id ASC Limit ?;");
     $query->bindParam(1, $page_end);
     if (!($query->execute())) {
         return "Error in query";

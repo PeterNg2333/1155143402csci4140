@@ -114,8 +114,16 @@
                     <li class="page-item">
                         <a href=
                         <?php 
+                            if ($auth){
+                                $count = count_image($auth);
+                            } else {
+                                $count = count_image("guest");
+                            }
                             $previous = $start-8;
                             if ($previous < 0){
+                                $previous = 0;
+                            }
+                            if ($start == 0){
                                 $previous = 0;
                             }
                             echo '"./index.php?start='.($previous).'"';
@@ -130,11 +138,6 @@
                     <li class="page-item"><a class="page-link disabled" href="#" >
                         <?php 
                             $end = $start+8;
-                            if ($auth){
-                                $count = count_image($auth);
-                            } else {
-                                $count = count_image("guest");
-                            }
                             if ($end >= $count){
                                 $end = $count;
                             }

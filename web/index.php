@@ -71,7 +71,7 @@
                 <figcaption class="col-3 d-block">
                     <div class="card">
                         <img
-                            src="./image.php"
+                            src="./lib/image.php?img_id=1"
                             class="card-img-top"
                             alt="Sunset over the Sea"
                         />
@@ -83,6 +83,23 @@
                         </div>
                       </div>
                   </figcaption>
+
+                  <figcaption class="col-3 d-block">
+                    <div class="card">
+                        <img
+                            src="./lib/image.php?img_id=3"
+                            class="card-img-top"
+                            alt="Sunset over the Sea"
+                        />
+                        <div class="card-body container py-2">
+                            <div class="row">
+                                <span class="card-title col-8">Card title </span>
+                                <a href="#!" class="btn btn-sm btn-secondary col-4">Edit</a>
+                            </div>
+                        </div>
+                      </div>
+                  </figcaption>
+
             </div>
 
 
@@ -107,19 +124,27 @@
     <section class="container mt-2 bg-light p-0 mt-2 border border-dark">
         <nav class="navbar navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#"></a>
-                <form  method="post" action="./lib/process.php?action=upload_image" enctype="multipart/form-data" class="d-flex">
-                    <div class="input-group">
-                        <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>
-                        <input type="file" name="file" class="form-control d-none" id="inputGroupFile" accept="image/*">
-                        <label class="input-group-text btn btn-info text-white" for="inputGroupFile">Upload</label>  
-                    </div>
-                    <button type="submit" class="btn btn-sm btn-primary ms-2">Submit</button>
-                    <div class="form-check form-switch ms-2">
-                        <input class="form-check-input" name="isPublic" type="checkbox" id="flexSwitchCheckDefault" checked>
-                        <div class="p-0"> Public </div>
-                    </div>
-                </form>
+                <?php
+                    $auth = is_auth();
+                    if ($auth){
+                        echo '<a class="navbar-brand" href="#"></a>';
+                        echo '<form  method="post" action="./lib/process.php?action=upload_image" enctype="multipart/form-data" class="d-flex">';
+                        echo '      <div class="input-group">';
+                        echo '          <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>';
+                        echo '          <input type="file" name="file" class="form-control d-none" id="inputGroupFile" accept="image/*">';
+                        echo '          <label class="input-group-text btn btn-info text-white" for="inputGroupFile">Upload</label>  ';
+                        echo '      </div>';
+                        echo '      <button type="submit" class="btn btn-sm btn-primary ms-2">Submit</button>';
+                        echo '      <div class="form-check form-switch ms-2">';
+                        echo '           <input class="form-check-input" name="isPublic" type="checkbox" id="flexSwitchCheckDefault" checked>';
+                        echo '          <div class="p-0"> Public </div>';
+                        echo '      </div>';
+                        echo '</form>';
+                    } else {
+                        echo '<div class="row"> <span class="text-center text-secondary">Please login to upload photos</span></div>';
+                    }
+                ?>
+
             </div>
         </nav>
     </section>

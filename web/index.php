@@ -143,11 +143,28 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-end">
                     <li class="page-item">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo; Previous</a>
+                        <a class="page-link" href=
+                        <?php 
+                            $previous = $start-8;
+                            if ($previous < 0){
+                                $previous = 0;
+                            }
+                            echo '"./index.php?start='.($start).'"';
+                        ?>
+                        tabindex="-1" aria-disabled="true">&laquo; Previous</a>
                     </li>
-                    <li class="page-item"><a class="page-link disabled" href="#" >1 of 18</a></li>
+                    <li class="page-item"><a class="page-link disabled" href="#" >
+                        <?php 
+                            echo ($start+8);
+                            echo " of ";
+                            echo count_image($userid)
+                        ?>
                     <li class="page-item">
-                        <a class="page-link" href="#">Next &raquo;</a>
+                        <a class="page-link" href=
+                        <?php 
+                            echo '"./index.php?start='.($start+8).'"';
+                        ?>
+                        >Next &raquo;</a>
                     </li>
                 </ul>
             </nav>

@@ -140,16 +140,17 @@ function count_image(){
 function fetch_ten_public_image($start, $length){
     global $conn;
     $conn = db_connect();
+    $limit = $start + $length;
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 img_id ASC Limit ?;");
-    $query->bindParam(1, $page_end);
+    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 ORDER BY img_id ASC Limit ?;");
+    $query->bindParam(1, $limit);
     if (!($query->execute())) {
         return "Error in query";
     }
     $result = $query->fetchAll();
-    $result_array = array_slice($result, $start-1, $length);
+    $result_array = array_slice($result, $start, $length);
     return $result_array;
 }
 

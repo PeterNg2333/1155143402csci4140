@@ -47,6 +47,13 @@
                         <img
                             src=
                             <?php
+                            if (isset($_GET['img_id']) && isset($_GET['filter'])){
+                                $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
+                                $filter = validate_input(int_sanitization($_GET['filter'] ), '/^\d+$/', "invalid-filter");
+                                echo "./lib/edited_image.php?img_id=". $img_id."&filter=".$filter;
+                            } else {
+                                echo "No image id provided";
+                            }
                             if (isset($_GET['img_id'])){
                                 $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
                                 echo "./lib/image.php?img_id=". $img_id;

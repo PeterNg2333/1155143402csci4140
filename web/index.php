@@ -53,6 +53,8 @@
 
         <section class="row">
             <div class="photo-frame row mb-2" style="margin-left: 0px; margin-right: 0px">
+                <div> a </div>
+                <div> b </div>
                 <?php
                     // if (isset($_GET['start'])){
                     //     $start = (int) $_GET['start'];
@@ -67,8 +69,9 @@
                     $start = 0;
                     $length = 9;
                     $username =  $auth;
-                    echo $username;
+                    echo $auth;
                     $res = json_encode(fetch_ten_public_image($start, $length));
+                    echo $res;
                     //     // $res = (array) array_slice($res, $start, $length);
                     //     foreach ($res as $image){
                     //         echo '<figcaption class="col-3 d-block">';
@@ -127,8 +130,9 @@
             //     echo '    <strong>Error!</strong> '.$e->getMessage();
             //     echo '</div>';
             // }
-            ?>
-
+            ?>  
+                <div> c </div>
+                
 
                 <figcaption class="col-3 d-block">
                     <div class="card">

@@ -112,7 +112,7 @@
                                 $previous = 0;
                             }
                             echo '"./index.php?start='.($previous).'"';
-                            if ($previous == 0){
+                            if ((int) $previous == 0){
                                 echo 'class="page-link disabled"';
                             }
                         ?>
@@ -129,6 +129,7 @@
                             if ($next >= $count){
                                 $next = $count;
                             }
+                            echo $start+1 . " - " . $next . " of ";
                             echo $count;
 
                         ?>

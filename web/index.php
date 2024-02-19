@@ -72,15 +72,13 @@
                     }
                     else 
                         $images = (array) fetch_ten_public_image($start, $length);
-
-                    
+                    $image = (array) array_splice($images, $start, $length);
                     foreach ($images as $image){
-                        if ($image["flag"]== 1){
+                        
+                        if ($image["flag"]== 1)
                             $creation_source = "Public image";
-                        }
-                        else {
+                        else 
                             $creation_source = "Private image";
-                        }
                         $img_id = $image["img_id"];
                         echo '<figcaption class="col-3 d-block">';
                         echo '    <div class="card">';

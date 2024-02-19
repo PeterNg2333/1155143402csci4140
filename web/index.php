@@ -121,8 +121,9 @@
                             echo '"./index.php?start='.($previous).'"';
                             echo 'class="page-link ';
                             if ((int) $previous == 0){
-                                echo 'disabled"';
+                                echo 'disabled';
                             }
+                            echo '"';
                         ?>
                         tabindex="-1" aria-disabled="true">&laquo; Previous</a>
                     </li>
@@ -148,8 +149,9 @@
                             echo '"./index.php?start='.($next).'"'; 
                             echo 'class="page-link ';
                             if ((int) $start+8 >= (int) $count){
-                                echo 'disabled"';
+                                echo 'disabled';
                             }
+                            echo '"';
                         ?>
                         >Next &raquo;</a>
                     </li>

@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-2">
                                     <form class="row px-1">
-                                        <button href=
+                                        <a href=
                                         <?php
 
                                         if (isset($_GET['img_id']) && isset($_GET['filter'])){
@@ -100,7 +100,7 @@
                                             "./index.php";
                                         
                                         ?>
-                                        class="btn btn-sm btn-success">Finish</button>
+                                        class="btn btn-sm btn-success">Finish</a>
                                     </form>
                                 </div>
                             </div>

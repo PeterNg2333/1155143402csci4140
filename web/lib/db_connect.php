@@ -205,7 +205,7 @@ function csci4140_finish_edit(){
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("UPDATE myimage SET img = ? WHERE img_id = ? LIMIT 1;");
+    $query = $conn->prepare("UPDATE myimage SET img = ? WHERE img_id = ?;");
     $query->bindParam(1, $imgage, PDO::PARAM_LOB);
     $query->bindParam(2, $img_id);
     if (!($query->execute())) {

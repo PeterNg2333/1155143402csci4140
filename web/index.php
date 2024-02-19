@@ -68,11 +68,12 @@
                     $username =  $auth;
                     $userid = get_userid_from_username($username);
                     if ($auth){
-                        $images = fetch_ten_image_auth($start, $length, $username);
+                        $images = (array) fetch_ten_image_auth($start, $length, $username);
                     }
                     else 
-                        $images = fetch_ten_public_image($start, $length);
+                        $images = (array) fetch_ten_public_image($start, $length);
 
+                    echo is_array($images);
                     
                     foreach ($images as $image){
                         if ($image["flag"]== 1){
@@ -159,7 +160,6 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <?php
-                    $auth = is_auth();
                     if ($auth){
                         echo '<a class="navbar-brand" href="#"></a>';
                         echo '<form  method="post" action="./lib/process.php?action=upload_image" enctype="multipart/form-data" class="d-flex">';

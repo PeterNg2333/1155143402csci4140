@@ -55,9 +55,16 @@
                 <?php
                 try {  
                     $start = (int) $_GET['start'] ?? 0;
-                    $length = (int) $_GET['len'] ?? 12;
-                    $username = is_auth();
-                    $images = fetch_ten_public_image($start, $length);
+                    $length = (int) $_GET['len'] ?? 10;
+                    $username =  $is_auth;
+                    $userid = get_userid_from_username($username);
+                    if ($auth){
+                        $images = fetch_ten_image_auth($start, $length, $username);
+                    }
+                    else 
+                        $images = fetch_ten_public_image($start, $length);
+
+                    
                     foreach ($images as $image){
                         if ($image["flag"]== 1){
                             $creation_source = "Public image";

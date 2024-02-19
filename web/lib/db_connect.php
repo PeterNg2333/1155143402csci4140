@@ -123,18 +123,24 @@ function retrieve_image(){
     }
 }
 
-function count_image(){
+function count_image($username){
     global $conn;
     $conn = db_connect();
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("SELECT COUNT(*) from myimage;");
+    $userid = get_id_from_username($username);
+    if ($username == 'guest'){
+        $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE FLAG = 1;");
+    } else {
+        $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE creator = ?;");
+        $query->bindParam(1, $userid);
+    }
     if (!($query->execute())) {
         return "Error in query";
     }
     $result = $query->fetchColumn();
-    return $result;
+    return (int) $result;
 }
 
 function fetch_ten_public_image($start, $length){
@@ -263,13 +269,13 @@ function is_auth(){
     return false;
 }
 
-function is_admin($username){
+function get_userid_from_username($username){
     global $conn;
     $conn = db_connect();
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("Select flag FROM MYUSER WHERE name = ? LIMIT 1;");
+    $query = $conn->prepare("Select id FROM MYUSER WHERE name = ? LIMIT 1;");
     $query->bindParam(1, $username);
     if (!($query->execute())){
         return "Error in query";
@@ -278,6 +284,13 @@ function is_admin($username){
         return "User not found";
     }
     $db_user = $query->fetchAll()[0];
+    return $db_user["id"];
+}
+
+function is_admin($username){
+    global $conn;
+    $conn = db_connect();
+    $db_user = get_userid_from_username($username);
     $db_flag = $db_user["flag"];
     if ($db_flag==1){
         return true;

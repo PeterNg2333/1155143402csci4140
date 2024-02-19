@@ -145,7 +145,7 @@
                     $auth = is_auth();
                     if ($auth){
                         echo '<a class="navbar-brand" href="#"></a>';
-                        echo '<form  method="post" action="./lib/process.php?action=show_request" enctype="multipart/form-data" class="d-flex">';
+                        echo '<form  method="post" action="./lib/process.php?action=upload_image" enctype="multipart/form-data" class="d-flex">';
                         echo '      <div class="input-group">';
                         echo '          <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>';
                         echo '          <input type="file" name="file" class="form-control d-none" id="inputGroupFile" accept="image/*">';

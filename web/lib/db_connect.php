@@ -281,7 +281,7 @@ function csci4140_login(){
         return "Error in query";
     }
     if ($query->rowCount() == 0){
-        echo "<p> User not found, go back to <a href='../index.php'></a></p>";
+        echo "<p> User not found, go back to <a href='../index.php'>index.php</a></p>";
         exit();
     }
     $db_user = $query->fetchAll()[0];
@@ -348,7 +348,7 @@ function is_auth(){
             return "Error in query";
         }
         if ($query->rowCount() == 0){
-            return "<p> User not found, go back to <a href='../index.php'></a></p>";
+            return "<p> User not found, go back to <a href='../index.php'>index.php</a></p>";
         }
         $db_user = $query->fetchAll()[0];
         $db_salt = $db_user["salt"];

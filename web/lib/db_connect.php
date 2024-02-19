@@ -186,8 +186,8 @@ function csci4140_finish_edit(){
     echo isset($_GET['filter']);
 
     if (isset($_GET['img_id']) && isset($_GET['filter'])){
-        $img_id = validate_input(int_sanitization($_POST['img_id'] ), '/^\d+$/', "invalid-img_id");
-        $filter = validate_input(string_sanitization($_POST['filter'] ), '/^\w+$/', "invalid-filter");
+        $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
+        $filter = validate_input(string_sanitization($_GET['filter'] ), '/^\w+$/', "invalid-filter");
     } else {
         return "No image id or filter provided";
     }

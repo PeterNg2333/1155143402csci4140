@@ -332,6 +332,8 @@ function csci4140_check_auth(){
     }
 }
 
+
+
 function is_auth(){
     if (isset($_SESSION['auth'])){
         return $_SESSION['auth']["name"];

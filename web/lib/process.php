@@ -15,6 +15,15 @@ if (empty($process_action)
     }else{
         try{
             $is_login = is_auth();
+            if (is_login_action($process_action) && !$is_login){
+                header('Location: ../login.php');
+                exit();
+            }
+            if (is_admin_action($process_action) && !is_admin($is_login)){
+                echo "You are not authorized to perform this action.";
+                echo "go back to <a href='./index.php'>Home</a>";
+                exit();
+            }
             if (($return_value = call_user_func('csci4140_' . $process_action)) === false) {
                 if ($conn && $conn->errorCode()) {
                     echo json_encode(array('failed'=>'error-db'));

@@ -1,6 +1,10 @@
 <?php
         require __DIR__.'/lib/db_connect.php';
         $auth = is_auth();
+        if (!$auth){
+            header('Location: ./login.php');
+            exit();
+        }
 ?> 
 
 <!DOCTYPE html>

@@ -5,4 +5,8 @@
         // $username = is_auth();
         echo count_image("admin01");
         echo json_encode(fetch_ten_public_image($start, $length));
+        echo "\n";
+        echo json_encode(fetch_ten_image_auth($start, $length, "user01"));
+        echo json_encode(fetch_ten_image_auth($start, $length, "admin01"));
+            
 ?> 

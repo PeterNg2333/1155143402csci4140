@@ -162,12 +162,24 @@ function fetch_ten_public_image($start, $length){
     return $result_array;
 }
 
-function fetch_ten_image_auth($page, $username){
+function fetch_ten_image_auth($start, $length, $username){
     global $conn;
     $conn = db_connect();
+    $limit = $start + $length;
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
+    $userid = get_id_from_username($username);
+    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 OR creator = ? ORDER BY img_id ASC Limit ?;");
+    $query->bindParam(1, $userid);
+    $query->bindParam(2, $limit);
+    if (!($query->execute())) {
+        return "Error in query";
+    }
+    $result = $query->fetchAll();
+    $result_array = array_slice($result, $start, $length);
+    return $result_array;
+
 }
                                                      
 

@@ -98,7 +98,7 @@
                                             echo "'./lib/process.php?action=finish_edit&filter=". $filter."&img_id=".$img_id."'";
                                             
                                         } else 
-                                            "./index.php";
+                                            echo "'./index.php'";
                                         
                                         ?>
                                         class="btn btn-sm btn-success">Finish</a>

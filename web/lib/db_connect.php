@@ -121,20 +121,42 @@ function retrieve_image(){
     }
 }
 
-function csci4140_fetch_ten_image(){
+function count_image(){
     global $conn;
     $conn = db_connect();
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("SELECT img_id, encode(img, 'base64') As img, filetype FROM myimage WHERE img_id = 1 LIMIT 10;");
+    $query = $conn->prepare("SELECT COUNT(*) from myimage;");
     if (!($query->execute())) {
         return "Error in query";
     }
-    $result = $query->fetchAll()[0];
-    header('Content-type: ' . $result['filetype']);
-    echo base64_decode($result['img']);
-    exit();
+    $result = $query->fetchColumn();
+    return $result;
+}
+
+function fetch_ten_public_image($start, $length){
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("SELECT img_id, FLAGAs img FROM myimage WHERE FLAG = 1 img_id ASC Limit ?;");
+    $query->bindParam(1, $page_end);
+    if (!($query->execute())) {
+        return "Error in query";
+    }
+    $result = $query->fetchAll();
+    $result_array = array_slice($result, $start-1, $length);
+    return $result_array;
+}
+
+function fetch_ten_image_auth($page, $username){
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
 }
                                                      
 

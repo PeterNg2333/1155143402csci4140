@@ -111,11 +111,9 @@ function get_binimage_from_id($id){
         return "Error in query";
     }
     $result = $query->fetchAll()[0];
+    header('Content-type: ' . $result['filetype']);
     return $result['img'];
-
 }
-
-
 
 function retrieve_image(){
     if (isset($_GET['img_id'])){

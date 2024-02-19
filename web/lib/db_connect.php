@@ -110,7 +110,7 @@ function get_binimage_from_id($id){
 
 }
 
-function csci4140_retrieve_image(){
+function retrieve_image(){
     if (isset($_GET['img_id'])){
         $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
         $img = get_binimage_from_id($img_id);

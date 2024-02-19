@@ -62,7 +62,7 @@
                     if (isset($_GET['len'])){
                         $length = (int) $_GET['len'];
                     } else {
-                        $length = 8;
+                        $length = 4;
                     }
                     $username =  $auth;
                     $userid = get_userid_from_username($username);

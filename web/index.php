@@ -52,7 +52,41 @@
 
         <section class="row">
             <div class="photo-frame row mb-2" style="margin-left: 0px; margin-right: 0px">
-                <figcaption class="col-3 d-block">
+                <?php
+                try {  
+                    $start = (int) $_GET['start'] ?? 0;
+                    $length = (int) $_GET['len'] ?? 12;
+                    $username = is_auth();
+                    $images = fetch_ten_public_image($start, $length);
+                    foreach ($images as $image){
+                        if ($image["flag"]== 1){
+                            $creation_source = "Public image";
+                        }
+                        else {
+                            $creation_source = "Private image";
+                        }
+                        $img_id = $image["img_id"];
+                        echo '<figcaption class="col-3 d-block">';
+                        echo '    <div class="card">';
+                        echo '        <img src="./lib/image.php?img_id='.$img_id.'" class="card-img-top" alt="Sunset over the Sea"/>';
+                        echo '        <div class="card-body container py-2">';
+                        echo '            <div class="row">';
+                        echo '                <span class="card-title col-8">'.$creation_source."-".$img_id.'</span>';
+                        echo '                <a href="'."./lib/image.php?img_id=". $img_id.'"class="btn btn-sm btn-secondary col-4">Edit</a>';
+                        echo '            </div>';
+                        echo '        </div>';
+                        echo '    </div>';
+                        echo '</figcaption>';
+                } 
+            } catch (Exception $e) {
+                echo '<div class="alert alert-danger" role="alert">';
+                echo '    <strong>Error!</strong> '.$e->getMessage();
+                echo '</div>';
+            }
+            ?>
+
+
+                <!-- <figcaption class="col-3 d-block">
                     <div class="card">
                         <img
                             src="https://mdbcdn.b-cdn.net/img/new/standard/nature/183.webp"
@@ -66,9 +100,9 @@
                             </div>
                         </div>
                     </div>
-                </figcaption>
+                </figcaption> -->
 
-                <figcaption class="col-3 d-block">
+                <!-- <figcaption class="col-3 d-block">
                     <div class="card">
                         <img
                             src="./lib/image.php?img_id=1"
@@ -82,42 +116,9 @@
                             </div>
                         </div>
                       </div>
-                  </figcaption>
-
-                  <figcaption class="col-3 d-block">
-                    <div class="card">
-                        <img
-                            src="./lib/edited_image.php?img_id=2"
-                            class="card-img-top"
-                            alt="Sunset over the Sea"
-                        />
-                        <div class="card-body container py-2">
-                            <div class="row">
-                                <span class="card-title col-8">Card title </span>
-                                <a href="#!" class="btn btn-sm btn-secondary col-4">Edit</a>
-                            </div>
-                        </div>
-                      </div>
-                  </figcaption>
+                  </figcaption> -->
 
 
-                  <figcaption class="col-3 d-block">
-                    <div class="card">
-                        <img
-                            src="./lib/image.php?img_id=3"
-                            class="card-img-top"
-                            alt="Sunset over the Sea"
-                        />
-                        <div class="card-body container py-2">
-                            <div class="row">
-                                <span class="card-title col-8">Card title </span>
-                                <a href="#!" class="btn btn-sm btn-secondary col-4">Edit</a>
-                            </div>
-                        </div>
-                      </div>
-                  </figcaption>
-
-            </div>
 
 
         </section >

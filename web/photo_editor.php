@@ -42,7 +42,7 @@
 
         <section class="row py-2">
             
-                <figcaption class="col-8 d-block">
+                <figcaption class="col-7 d-block">
                     <div class="card">
                         <img
                             src=
@@ -73,7 +73,7 @@
                         </div>
                       </div>
                     </figcaption>
-                    <form class="col-4" method="POST" action="./lib/process.php?action=show_request">
+                    <form class="col-5" method="POST" action="./lib/process.php?action=show_request">
                         <div class="row m-1"> 
                             <span class="align-middle col-2">Filter: </span>
                             <div class="col-5"><div class="row px-1">

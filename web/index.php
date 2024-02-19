@@ -67,8 +67,8 @@
                     $start = 0;
                     $length = 9;
                     $username =  $auth;
-                    // echo $username;
-                    //     $res = fetch_ten_public_image($start, $length);
+                    echo $username;
+                    $res = json_encode(fetch_ten_public_image($start, $length));
                     //     // $res = (array) array_slice($res, $start, $length);
                     //     foreach ($res as $image){
                     //         echo '<figcaption class="col-3 d-block">';

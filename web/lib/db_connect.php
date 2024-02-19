@@ -161,14 +161,13 @@ function fetch_ten_public_image($start, $length){
     return (array)  $query->fetchAll();
 }
 
-function fetch_ten_image_auth($start, $length, $username){
+function fetch_ten_image_auth($start, $length, $userid){
     global $conn;
     $conn = db_connect();
     $limit = $start + $length;
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $userid = get_id_from_username($username);
     $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 OR (Flag = 0 And creator = ?) ORDER BY img_id DESC Limit ?;");
     $query->bindParam(1, $userid);
     $query->bindParam(2, $limit);

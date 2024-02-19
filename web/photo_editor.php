@@ -54,9 +54,8 @@
                             <?php
 
                             if (isset($_GET['img_id']) && isset($_GET['filter'])){
-                                echo json_encode($_GET);
                                 $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
-                                $filter = validate_input(int_sanitization($_GET['filter'] ), '/^\d+$/', "invalid-filter");
+                                $filter = validate_input(int_sanitization($_GET['filter'] ), '/^\w+$/', "invalid-filter");
                                 echo "'./lib/image.php?filter=". $filter."&img_id=". $img_id."'";
                                 
                             } else if (isset($_GET['img_id'])){

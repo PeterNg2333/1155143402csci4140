@@ -154,7 +154,7 @@ function fetch_ten_public_image($start, $length){
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 ORDER BY img_id ASC Limit ?;");
+    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 ORDER BY img_id DESC Limit ?;");
     $query->bindParam(1, $limit);
     if (!($query->execute())) {
         return "Error in query";
@@ -170,7 +170,7 @@ function fetch_ten_image_auth($start, $length, $username){
         return "Unable to connect to the database: " . $conn->getMessage();
     }
     $userid = get_id_from_username($username);
-    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 OR creator = ? ORDER BY img_id ASC Limit ?;");
+    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 OR creator = ? ORDER BY img_id DESC Limit ?;");
     $query->bindParam(1, $userid);
     $query->bindParam(2, $limit);
     if (!($query->execute())) {
@@ -180,6 +180,38 @@ function fetch_ten_image_auth($start, $length, $username){
 
 }
                                                      
+function csci4140_finish_edit(){
+    if (isset($_POST['img_id']) && isset($_POST['filter'])){
+        $img_id = validate_input(int_sanitization($_POST['img_id'] ), '/^\d+$/', "invalid-img_id");
+        $filter = validate_input(string_sanitization($_POST['filter'] ), '/^\w+$/', "invalid-filter");
+    } else {
+        return "No image id or filter provided";
+    }
+    $img = get_binimage_from_id($img_id);
+    $imageDataDecoded = base64_decode($img);
+    $image = new Imagick();
+    $image->readImageBlob($imageDataDecoded);
+    if ($filter == "border"){
+        $image -> borderImage('black', 5, 5);
+    } else if ($filter == "blackNwhite"){
+        $image -> setImageType (2);
+    }   
+    $imgage = $image->getImageBlob();
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("UPDATE myimage SET img = ? WHERE img_id = ? LIMIT 1;");
+    $query->bindParam(1, $imgage, PDO::PARAM_LOB);
+    $query->bindParam(2, $img_id);
+    if (!($query->execute())) {
+        return "Error in query";
+    }
+    header('Location: ../index.php', true, 302);
+    return "Successfully edited the image with ID: " . $img_id;
+
+
+}
 
 //////////////////////////////////////////////////////////////////////////////////
                       //////// Password Management ///////

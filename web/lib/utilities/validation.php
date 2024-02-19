@@ -20,6 +20,7 @@ function is_form_action($action){
         || $action == "db_test"
         || $action == "show_request"
         || $action == "check_auth"
+        || $action == "finish_edit"
         ){
         return true;
     }

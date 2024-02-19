@@ -88,7 +88,19 @@
                                 </div>
                                 <div class="col-2">
                                     <form class="row px-1">
-                                        <button href="#!" class="btn btn-sm btn-success">Finish</button>
+                                        <button href=
+                                        <?php
+
+                                        if (isset($_GET['img_id']) && isset($_GET['filter'])){
+                                            $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
+                                            $filter = validate_input(string_sanitization($_GET['filter'] ), '/^\w+$/', "invalid-filter");
+                                            echo "'./lib/process.php?action=finish_edit&img_id="."&filter=". $filter. $img_id."'";
+                                            
+                                        } else 
+                                            "./index.php";
+                                        
+                                        ?>
+                                        class="btn btn-sm btn-success">Finish</button>
                                     </form>
                                 </div>
                             </div>

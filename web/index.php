@@ -130,37 +130,6 @@
             ?>  
 
 
-                <figcaption class="col-3 d-block">
-                    <div class="card">
-                        <img
-                            src="https://mdbcdn.b-cdn.net/img/new/standard/nature/183.webp"
-                            class="card-img-top"
-                            alt="Sunset over the Sea"
-                        />
-                        <div class="card-body container py-2">
-                            <div class="row">
-                                <span class="card-title col-8">Card title </span>
-                                <a href="#!" class="btn btn-sm btn-secondary col-4">Edit</a>
-                            </div>
-                        </div>
-                    </div>
-                </figcaption>
-
-                <!-- <figcaption class="col-3 d-block">
-                    <div class="card">
-                        <img
-                            src="./lib/image.php?img_id=1"
-                            class="card-img-top"
-                            alt="Sunset over the Sea"
-                        />
-                        <div class="card-body container py-2">
-                            <div class="row">
-                                <span class="card-title col-8">Card title </span>
-                                <a href="#!" class="btn btn-sm btn-secondary col-4">Edit</a>
-                            </div>
-                        </div>
-                      </div>
-                  </figcaption> -->
 
 
 

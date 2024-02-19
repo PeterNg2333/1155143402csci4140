@@ -160,7 +160,7 @@ function fetch_ten_public_image($start, $length){
     }
     $result = $query->fetchAll();
     $result_array = array_slice($result, $start, $length);
-    return $result_array;
+    return is_array($result_array);
 }
 
 function fetch_ten_image_auth($start, $length, $username){

@@ -136,7 +136,7 @@ function count_image($username){
     if ($username == 'guest'){
         $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE FLAG = 1;");
     } else {
-        $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE creator = ?;");
+        $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE FLAG = 1 OR creator = ?;");
         $query->bindParam(1, $userid);
     }
     if (!($query->execute())) {

@@ -290,8 +290,6 @@ function get_userid_from_username($username){
 }
 
 function is_admin($username){
-    global $conn;
-    $conn = db_connect();
     $db_user = get_userid_from_username($username);
     $db_flag = $db_user["flag"];
     if ($db_flag==1){

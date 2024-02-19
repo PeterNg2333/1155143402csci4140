@@ -158,7 +158,11 @@
                             echo ($start+8);
                             echo " of ";
                             echo $auth ;
-                            echo count_image($auth);
+                            if ($auth){
+                                echo count_image($auth);
+                            } else {
+                                echo count_image("guest");
+                            }
                         ?>
                     <li class="page-item">
                         <a class="page-link" href=

@@ -181,7 +181,7 @@ function fetch_ten_image_auth($start, $length, $username){
 }
                                                      
 function csci4140_finish_edit(){
-    echo json_decode($_GET);
+    echo json_encode($_GET);
     return 0;
     if (isset($_GET['img_id']) && isset($_GET['filter'])){
         $img_id = validate_input(int_sanitization($_POST['img_id'] ), '/^\d+$/', "invalid-img_id");

@@ -13,7 +13,7 @@
             echo '        <div class="card-body container py-2">';
             echo '            <div class="row">';
             echo '                <span class="card-title col-8">'.$image['img_id'].'</span>';
-            echo '                <a href="'."./photo_editor?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
+            echo '                <a href="'."./photo_editor.php?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
             echo '            </div>';
 
             echo '        </div>';

@@ -54,34 +54,36 @@
         <section class="row">
             <div class="photo-frame row mb-2" style="margin-left: 0px; margin-right: 0px">
                 <?php
-                    if (isset($_GET['start'])){
-                        $start = (int) $_GET['start'];
-                    } else {
-                        $start = 0;
-                    }
-                    if (isset($_GET['len'])){
-                        $length = (int) $_GET['len'];
-                    } else {
-                        $length = 9;
-                    }
+                    // if (isset($_GET['start'])){
+                    //     $start = (int) $_GET['start'];
+                    // } else {
+                    //     $start = 0;
+                    // }
+                    // if (isset($_GET['len'])){
+                    //     $length = (int) $_GET['len'];
+                    // } else {
+                        
+                    // }
+                    $start = 0;
+                    $length = 9;
                     $username =  $auth;
-                    echo $username;
-                        $res = fetch_ten_public_image($start, $length);
-                        // $res = (array) array_slice($res, $start, $length);
-                        foreach ($res as $image){
-                            echo '<figcaption class="col-3 d-block">';
-                            echo '    <div class="card">';
-                            echo '        <img src="./lib/image.php?img_id='.$image['img_id'].'" class="card-img-top" alt="Sunset over the Sea"/>';
-                            echo '        <div class="card-body container py-2">';
-                            echo '            <div class="row">';
-                            echo '                <span class="card-title col-8">'.$image['img_id'].'</span>';
-                            echo '                <a href="'."./photo_editor?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
-                            echo '            </div>';
+                    // echo $username;
+                    //     $res = fetch_ten_public_image($start, $length);
+                    //     // $res = (array) array_slice($res, $start, $length);
+                    //     foreach ($res as $image){
+                    //         echo '<figcaption class="col-3 d-block">';
+                    //         echo '    <div class="card">';
+                    //         echo '        <img src="./lib/image.php?img_id='.$image['img_id'].'" class="card-img-top" alt="Sunset over the Sea"/>';
+                    //         echo '        <div class="card-body container py-2">';
+                    //         echo '            <div class="row">';
+                    //         echo '                <span class="card-title col-8">'.$image['img_id'].'</span>';
+                    //         echo '                <a href="'."./photo_editor.php?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
+                    //         echo '            </div>';
                 
-                            echo '        </div>';
-                            echo '    </div>';
-                            echo '</figcaption>';
-                        }
+                    //         echo '        </div>';
+                    //         echo '    </div>';
+                    //         echo '</figcaption>';
+                    //     }
             //     try {  
             //         if (isset($_GET['start'])){
             //             $start = (int) $_GET['start'];

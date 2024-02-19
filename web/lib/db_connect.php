@@ -290,7 +290,20 @@ function get_userid_from_username($username){
 }
 
 function is_admin($username){
-    $db_user = get_userid_from_username($username);
+    global $conn;
+    $conn = db_connect();
+    if ($conn instanceof PDOException) {
+        return "Unable to connect to the database: " . $conn->getMessage();
+    }
+    $query = $conn->prepare("Select id FROM MYUSER WHERE name = ? LIMIT 1;");
+    $query->bindParam(1, $username);
+    if (!($query->execute())){
+        return "Error in query";
+    }
+    if ($query->rowCount() == 0){
+        return "User not found";
+    }
+    $db_user = $query->fetchAll()[0];
     $db_flag = $db_user["flag"];
     if ($db_flag==1){
         return true;

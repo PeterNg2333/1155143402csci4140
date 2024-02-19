@@ -15,7 +15,7 @@ if (empty($process_action)
     }else{
         try{
             $is_login = is_auth();
-            if (is_login_action($process_action) && !$is_login){
+            if (!is_login_action($process_action) && !$is_login){
                 header('Location: ../login.php');
                 exit();
             }

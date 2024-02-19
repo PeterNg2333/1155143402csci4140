@@ -62,12 +62,12 @@
                     if (isset($_GET['len'])){
                         $length = (int) $_GET['len'];
                     } else {
-                        $length = 4;
+                        $length = 8;
                     }
                     $username =  $auth;
                     $userid = get_userid_from_username($username);
                     if ($auth){
-                        $res = (array) fetch_ten_image_auth($start, $length, $username);
+                        $res = (array) fetch_ten_image_auth($start, $length, $userid);
                     }
                     else 
                         $res = (array) fetch_ten_public_image($start, $length);
@@ -150,6 +150,9 @@
                                 $previous = 0;
                             }
                             echo '"./index.php?start='.($previous).'"';
+                            if ($previous == 0){
+                                echo 'disabled';
+                            }
                         ?>
                         tabindex="-1" aria-disabled="true">&laquo; Previous</a>
                     </li>
@@ -171,10 +174,10 @@
                             if ($start+8 >= $count){
                                 $start = $count;
                             }
-                            else {
-                                $start = $start+8;
+                            echo '"./index.php?start='.($start).'"'; 
+                            if ($start+8 >= $count){
+                                echo 'disabled';
                             }
-                            echo '"./index.php?start='.($start).'"';
                         ?>
                         >Next &raquo;</a>
                     </li>

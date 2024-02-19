@@ -76,8 +76,9 @@ function store_file($file){
         $img = file_get_contents($file['tmp_name']);
         $name = validate_input(string_sanitization($file['name']), '/^[\w\- ]+$/', "invalid-filename");
         $creator = get_id_from_username(is_auth());
-        echo $_POST["isPublic"];
-        $is_public = validate_input(string_sanitization($_POST["isPublic"]), '/^[\w\- ]+$/', "invalid-flag");
+        if (isset($_POST["isPublic"])){
+            $is_public = validate_input(string_sanitization($_POST["isPublic"]), '/^[\w\- ]+$/', "invalid-flag");
+        }
         $flag = 0;
         if ($is_public == "on"){
             $flag = 1;

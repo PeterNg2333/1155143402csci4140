@@ -72,7 +72,7 @@
                     }
                     else 
                         $images = (array) fetch_ten_public_image($start, $length);
-                    $image = (array) array_splice($images, $start, $length);
+                    $image = (array) array_slice($images, $start, $length);
                     foreach ($images as $image){
                         
                         if ($image["flag"]== 1)

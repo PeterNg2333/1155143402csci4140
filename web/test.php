@@ -5,6 +5,7 @@
         // $username = is_auth();
         echo count_image("admin01");
         $res = fetch_ten_public_image($start, $length);
+        $res = (array) array_slice($res, $start, $length);
         foreach ($res as $image){
             echo '<figcaption class="col-3 d-block">';
             echo '    <div class="card">';

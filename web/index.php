@@ -159,15 +159,23 @@
                             echo " of ";
                             echo $auth ;
                             if ($auth){
-                                echo count_image($auth);
+                                $count = count_image($auth);
                             } else {
-                                echo count_image("guest");
+                                $count = count_image("guest");
                             }
+                            echo $count;
                         ?>
+                    </a></li>
                     <li class="page-item">
                         <a class="page-link" href=
                         <?php 
-                            echo '"./index.php?start='.($start+8).'"';
+                            if ($start+8 >= $count){
+                                $start = $count;
+                            }
+                            else {
+                                $start = $start+8;
+                            }
+                            echo '"./index.php?start='.($start).'"';
                         ?>
                         >Next &raquo;</a>
                     </li>

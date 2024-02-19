@@ -93,18 +93,32 @@ function store_file($file){
     }
 }
 
-function retrieve_image(){
+function get_binimage_from_id($id){
     global $conn;
     $conn = db_connect();
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("SELECT img_id, encode(img, 'base64') As img, filetype FROM myimage WHERE img_id = 1 LIMIT 10;");
+    $query = $conn->prepare("SELECT img_id, encode(img, 'base64') As img, filetype FROM myimage WHERE img_id = ? LIMIT 1;");
+    $query->bindParam(1, $id);
     if (!($query->execute())) {
         return "Error in query";
     }
     $result = $query->fetchAll()[0];
+    header('Content-type: ' . $result['filetype']);
     return $result['img'];
+
+}
+
+function csci4140_retrieve_image(){
+    if (isset($_GET['img_id'])){
+        $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
+        $img = get_binimage_from_id($img_id);
+        echo base64_decode($img);
+        exit();
+    } else {
+        return "No image id provided";
+    }
 }
 
 function csci4140_fetch_ten_image(){

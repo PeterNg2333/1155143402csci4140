@@ -3,19 +3,20 @@ include_once('utilities/sanitization.php');
 include_once('utilities/validation.php');
 session_start(['cookie_httponly' => true, 'cookie_secure' => true,]);
 
-$host = 'dpg-cn6tmn2cn0vc73dmghjg-a';
-$dbname = 'db_1155143402csci4140';
-$username = 'db_1155143402csci4140_user';
-$password = 'RQHfnfnO07Owiin69v9mf375Vrkd2yPi';
+$HOST = 'dpg-cn6tmn2cn0vc73dmghjg-a';
+$DBNAME = 'db_1155143402csci4140';
+$USERNAME = 'db_1155143402csci4140_user';
+$PD = 'RQHfnfnO07Owiin69v9mf375Vrkd2yPi';
 
 //////////////////////////////////////////////////////////////////////////////////
                             //////// DataBase ///////
 //////////////////////////////////////////////////////////////////////////////////
 
 function db_connect() {
-    global $host, $dbname, $username, $password;
+    global $HOST, $DBNAME, $USERNAME, $PD;
     try {
-        $conn = new PDO("pgsql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password");
+        $conn = new PDO("pgsql:host=$HOST;port=5432;dbname=$DBNAME;user=$USERNAME;password=$PD");
+        
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     } catch(PDOException $e) {
@@ -254,11 +255,11 @@ function is_auth(){
     }
     if (isset($_COOKIE['auth'])){
         global $conn;
+        $conn = db_connect();
         $cookie = json_decode($_COOKIE['auth'], true);
         $cookie_name = $cookie["name"];
         $cookie_exp = $cookie["exp"];  
         $cookie_k = $cookie["k"];
-        $conn = db_connect();
         $query = $conn->prepare("Select * FROM MYUSER WHERE name = ? LIMIT 1;");
         $query->bindParam(1, $cookie_name);
         if (!($query->execute())){

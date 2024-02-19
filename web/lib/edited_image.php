@@ -6,7 +6,7 @@ if (isset($_GET['img_id']) || isset($_GET['filter'])){
     $filter = validate_input(int_sanitization($_GET['filter'] ), '/^\d+$/', "invalid-filter");
     $img = get_binimage_from_id($img_id);
 } else {
-    return "No image id provided";
+    return "No image id or filter provided";
 }
 
 $imageDataDecoded = base64_decode($img);

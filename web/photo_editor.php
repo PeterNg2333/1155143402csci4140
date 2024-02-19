@@ -84,10 +84,10 @@
                         <div class="row m-1"> 
                             <span class="align-middle col-2">Filter: </span>
                             <div class="col-5"><div class="row px-1">
-                                <a href="#!" class="btn btn-sm btn-primary"> Add Border</a>
+                                <a href= <?php echo "'./photo_editor.php?img_id=". $img_id."&filter=border'"; ?>class="btn btn-sm btn-primary"> Add Border</a>
                             </div></div>
                             <div class="col-5"><div class="row px-1">
-                                <a href="#!" class="btn btn-sm btn-primary">Black & White</a>
+                                <a href= <?php echo "'./photo_editor.php?img_id=". $img_id."&filter=blackNwhite'"; ?>class="btn btn-sm btn-primary"> Black & White</a>
                             </div></div>
                         </div>
                     </form>

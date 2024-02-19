@@ -295,7 +295,7 @@ function is_admin($username){
     if ($conn instanceof PDOException) {
         return "Unable to connect to the database: " . $conn->getMessage();
     }
-    $query = $conn->prepare("Select id FROM MYUSER WHERE name = ? LIMIT 1;");
+    $query = $conn->prepare("Select * FROM MYUSER WHERE name = ? LIMIT 1;");
     $query->bindParam(1, $username);
     if (!($query->execute())){
         return "Error in query";

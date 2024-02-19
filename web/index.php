@@ -53,29 +53,25 @@
 
         <section class="row">
             <div class="photo-frame row mb-2" style="margin-left: 0px; margin-right: 0px">
-                <div> a </div>
-                <div> b </div>
                 <?php
-                    // if (isset($_GET['start'])){
-                    //     $start = (int) $_GET['start'];
-                    // } else {
-                    //     $start = 0;
-                    // }
-                    // if (isset($_GET['len'])){
-                    //     $length = (int) $_GET['len'];
-                    // } else {
+                    if (isset($_GET['start'])){
+                        $start = (int) $_GET['start'];
+                    } else {
+                        $start = 0;
+                    }
+                    if (isset($_GET['len'])){
+                        $length = (int) $_GET['len'];
+                    } else {
                         
-                    // }
+                    }
                     $start = 0;
                     $length = 9;
                     $username =  $auth;
-                    // echo $auth;
-                    // $res = json_encode(fetch_ten_public_image($start, $length));
-                    // echo $res;
+                    $userid = get_userid_from_username($username);
                     $res = fetch_ten_public_image($start, $length);
-                    //     // $res = (array) array_slice($res, $start, $length);
+                    $res = (array) array_slice($res, $start, $length);
                         foreach ($res as $image){
-                            echo '<figcaption class="col-3 d-block">';
+                            echo '<figcaption class="col-3 d-block mb=2">';
                             echo '    <div class="card">';
                             echo '        <img src="./lib/image.php?img_id='.$image['img_id'].'" class="card-img-top" alt="Sunset over the Sea"/>';
                             echo '        <div class="card-body container py-2">';
@@ -132,7 +128,6 @@
             //     echo '</div>';
             // }
             ?>  
-                <div> c </div>
 
 
                 <figcaption class="col-3 d-block">

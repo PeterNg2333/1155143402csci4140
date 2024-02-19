@@ -62,10 +62,15 @@
                     if (isset($_GET['len'])){
                         $length = (int) $_GET['len'];
                     } else {
-                        $length = 7;
+                        $length = 8;
                     }
                     $username =  $auth;
                     $userid = get_userid_from_username($username);
+                    if ($auth){
+                        $res = (array) fetch_ten_image_auth($start, $length, $username);
+                    }
+                    else 
+                        $res = (array) fetch_ten_public_image($start, $length);
                     $res = fetch_ten_public_image($start, $length);
                     $res = (array) array_slice($res, $start, $length);
                         foreach ($res as $image){

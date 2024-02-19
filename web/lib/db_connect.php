@@ -55,6 +55,7 @@ function csci4140_upload_image(){
     if (isset($_FILES['file'])) {
         $imageId = store_file($_FILES['file']);
         header('Location: ../photo_editor.php?img_id='.$imageId, true, 302);
+        return "Successfully uploaded the image";
     }else {
         echo "No file uploaded";
         return json_encode($_FILES['file']);
@@ -68,7 +69,7 @@ function store_file($file){
     $fileType = $file['type'];
     if (!in_array($fileType, $allowedTypes) && !in_array(mime_content_type($file['tmp_name']), $allowedTypes)) {
 
-        return "Invalid file type for". $file['type'];
+        return "Invalid file type for ". $file['type'];
     }
     else {
         $conn = db_connect();

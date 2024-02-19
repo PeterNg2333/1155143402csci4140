@@ -67,7 +67,7 @@
                     $username =  $auth;
                     echo $username;
                         $res = fetch_ten_public_image($start, $length);
-                        $res = (array) array_slice($res, $start, $length);
+                        // $res = (array) array_slice($res, $start, $length);
                         foreach ($res as $image){
                             echo '<figcaption class="col-3 d-block">';
                             echo '    <div class="card">';
@@ -75,7 +75,7 @@
                             echo '        <div class="card-body container py-2">';
                             echo '            <div class="row">';
                             echo '                <span class="card-title col-8">'.$image['img_id'].'</span>';
-                            echo '                <a href="'."./lib/image.php?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
+                            echo '                <a href="'."./photo_editor?img_id=". $image['img_id'].'"class="btn btn-sm btn-secondary col-4">Edit</a>';
                             echo '            </div>';
                 
                             echo '        </div>';

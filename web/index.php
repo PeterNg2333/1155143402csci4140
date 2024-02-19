@@ -1,7 +1,5 @@
 <?php
         require __DIR__.'/lib/db_connect.php';
-        require __DIR__.'/lib/utilities/sanitization.php';
-        require __DIR__.'/lib/utilities/validation.php';
         $auth = is_auth();
 ?> 
 

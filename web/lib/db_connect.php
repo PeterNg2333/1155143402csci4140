@@ -78,6 +78,8 @@ function store_file($file){
         $creator = get_id_from_username(is_auth());
         if (isset($_POST["isPublic"])){
             $is_public = validate_input(string_sanitization($_POST["isPublic"]), '/^[\w\- ]+$/', "invalid-flag");
+        }else{
+            $is_public = "off";
         }
         $flag = 0;
         if ($is_public == "on"){

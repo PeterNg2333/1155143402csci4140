@@ -114,32 +114,32 @@
                             }
                             echo '"./index.php?start='.($previous).'"';
                             if ($previous == 0){
-                                echo 'disabled';
+                                echo 'class="page-link disabled"';
                             }
                         ?>
                         tabindex="-1" aria-disabled="true">&laquo; Previous</a>
                     </li>
                     <li class="page-item"><a class="page-link disabled" href="#" >
                         <?php 
-                            echo ($start+8);
-                            echo " of ";
+                            $next = $start+8;
                             if ($auth){
                                 $count = count_image($auth);
                             } else {
                                 $count = count_image("guest");
                             }
+                            if ($next >= $count){
+                                $next = $count;
+                            }
                             echo $count;
+
                         ?>
                     </a></li>
                     <li class="page-item">
                         <a class="page-link" href=
                         <?php 
+                            echo '"./index.php?start='.($next).'"'; 
                             if ($start+8 >= $count){
-                                $start = $count;
-                            }
-                            echo '"./index.php?start='.($start).'"'; 
-                            if ($start+8 >= $count){
-                                echo 'disabled';
+                                echo 'class="page-link disabled"';
                             }
                         ?>
                         >Next &raquo;</a>

@@ -129,16 +129,16 @@
                     </li>
                     <li class="page-item"><a class="page-link disabled" href="#" >
                         <?php 
-                            $next = $start+8;
+                            $end = $start+8;
                             if ($auth){
                                 $count = count_image($auth);
                             } else {
                                 $count = count_image("guest");
                             }
-                            if ($next >= $count){
-                                $next = $next-8;
+                            if ($end >= $count){
+                                $end = $count;
                             }
-                            echo $start+1 . " - " . $next . " of ";
+                            echo $start+1 . " - " . $end . " of ";
                             echo $count;
 
                         ?>
@@ -146,6 +146,10 @@
                     <li class="page-item">
                         <a href=
                         <?php 
+                            $next = $start+ 8;
+                            if ($next >= $count){
+                                $next = $start;
+                            }
                             echo '"./index.php?start='.($next).'"'; 
                             echo 'class="page-link ';
                             if ((int) $start+8 >= (int) $count){

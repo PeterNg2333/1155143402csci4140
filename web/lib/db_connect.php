@@ -136,7 +136,7 @@ function count_image($username){
     if ($username == 'guest'){
         $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE FLAG = 1;");
     } else {
-        $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE FLAG = 1 OR creator = ?;");
+        $query = $conn->prepare("SELECT COUNT(*) from myimage WHERE FLAG = 1 OR (Flag = 0 And creator = ?);");
         $query->bindParam(1, $userid);
     }
     if (!($query->execute())) {
@@ -169,7 +169,7 @@ function fetch_ten_image_auth($start, $length, $username){
         return "Unable to connect to the database: " . $conn->getMessage();
     }
     $userid = get_id_from_username($username);
-    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 OR creator = ? ORDER BY img_id DESC Limit ?;");
+    $query = $conn->prepare("SELECT img_id, FLAG FROM myimage WHERE FLAG = 1 OR (Flag = 0 And creator = ?) ORDER BY img_id DESC Limit ?;");
     $query->bindParam(1, $userid);
     $query->bindParam(2, $limit);
     if (!($query->execute())) {

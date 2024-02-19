@@ -16,7 +16,7 @@
                     <div class="text-center m-2">
                         <strong class="text-danger ">Important: </strong><span>all data would be deleted.</span>
                     </div>
-                    <form class="mx-auto" method="POST" action="./lib/process.php?action=show_request" class="row">
+                    <form class="mx-auto" method="POST" action="./lib/process.php?action=init_all" class="row">
                         <div class="form-outline text-center mb-4">
                             <button type="" class="btn btn-success btn-block"> Please Go Ahead </button>
                             <a href="./index.php" class="btn btn-danger btn-block"> Go Back </a>

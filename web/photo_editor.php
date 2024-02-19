@@ -81,7 +81,7 @@
                         />
                         <div class="card-body container py-2">
                             <div class="row">
-                                <span class="card-title col-8 align-middle">Card title </span>
+                                <span class="card-title col-8 align-middle"></span>
                                 <div class="col-2">
                                     <form class="row px-1">
                                         <a href=

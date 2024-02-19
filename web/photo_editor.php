@@ -41,9 +41,16 @@
                 <figcaption class="col-8 d-block">
                     <div class="card">
                         <img
-                            src="https://mdbcdn.b-cdn.net/img/new/standard/nature/183.webp"
+                            src=
+                            <?php
+                            if (isset($_GET['img_id'])){
+                                $img_id = validate_input(int_sanitization($_GET['img_id'] ), '/^\d+$/', "invalid-img_id");
+                                echo "./lib/image.php?img_id=". $_GET['img_id'];
+                            } else {
+                                echo "No image id provided";
+                            }
+                            ?>
                             class="card-img-top"
-                            alt="Sunset over the Sea"
                         />
                         <div class="card-body container py-2">
                             <div class="row">

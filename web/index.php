@@ -1,5 +1,7 @@
 <?php
         require __DIR__.'/lib/db_connect.php';
+        require __DIR__.'/lib/utilities/sanitization.php';
+        require __DIR__.'/lib/utilities/validation.php';
         $auth = is_auth();
 ?> 
 
@@ -56,12 +58,12 @@
                 <?php
                 try {
                     if (isset($_GET['start'])){
-                        $start = (int) $_GET['start'];
+                        $start = validate_input(int_sanitization($_GET['start']) , '/^\d+$/', "invalid-start");
                     } else {
                         $start = 0;
                     }
                     if (isset($_GET['len'])){
-                        $length = (int) $_GET['len'];
+                        $length = validate_input(int_sanitization($_GET['len']) , '/^\d+$/', "invalid-len");
                     } else {
                         $length = 8;
                     }

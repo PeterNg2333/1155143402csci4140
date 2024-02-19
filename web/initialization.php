@@ -1,3 +1,14 @@
+<?php 
+require __DIR__.'/lib/db_connect.php';
+$auth = is_auth();
+if (!$auth && !is_admin($auth)){
+    echo "You are not authorized to perform this action.";
+    echo "go back to <a href='./index.php'>Home</a>";
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

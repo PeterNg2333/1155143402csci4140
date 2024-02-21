@@ -47,10 +47,10 @@ The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render se
 
 - Parts completed
   - Access control: three type of user: guest, normal **user (username & password: user01)  and **admin user (username & password: admin01) 
-    a. Both normal and admin users have the ability to upload, edit photos, and view both private and public images. However, guests are only permitted to view public images.  <br />
-    b. The admin user has the additional capability to initialize the entire image database system.  <br />
-    c. The login, loginout and authentication system is managed by several functions including: is_auth(), csci4140_login(), csci4140_logout(), and is_admin($username), among others. <br />
-    d. Both the cookies (login name and pd) and session (session id) are used to store the login status of the user
+    I.  Both normal and admin users have the ability to upload, edit photos, and view both private and public images. However, guests are only permitted to view public images.  <br />
+    II.  The admin user has the additional capability to initialize the entire image database system.  <br />
+    III. The login, loginout and authentication system is managed by several functions including: is_auth(), csci4140_login(), csci4140_logout(), and is_admin($username), among others. <br />
+    IV. Both the cookies (login name and pd) and session (session id) are used to store the login status of the user
 
   - Photo album 
     a. Photos are displayed in chronological order based on their creation time. The order is not affected by the time of modification, with older photos appearing at the end. <br />

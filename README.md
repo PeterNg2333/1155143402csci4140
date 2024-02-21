@@ -46,19 +46,19 @@ The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render se
   - This readme file
 
 - Parts completed
-  - Access control: three type of user: guest, normal **user (username & password: user01)  and **admin user (username & password: admin01)  <br />
+  - Access control: three type of user: guest, normal **user (username & password: user01)  and **admin user (username & password: admin01) 
     1. Both normal and admin users have the ability to upload, edit photos, and view both private and public images. However, guests are only permitted to view public images.  <br />
     2.  The admin user has the additional capability to initialize the entire image database system.  <br />
     3. The login, loginout and authentication system is managed by several functions including: is_auth(), csci4140_login(), csci4140_logout(), and is_admin($username), among others. <br />
     4. Both the cookies (login name and pd) and session (session id) are used to store the login status of the user
 
-  - Photo album  <br />
+  - Photo album 
     1. Photos are displayed in chronological order based on their creation time. The order is not affected by the time of modification, with older photos appearing at the end. <br />
     2. Pagination: Each page displays only 8 photos. Users can navigate through the pages using the 'previous' and 'next' buttons to view additional sets of 8 photos. <br />
     3. Files are stored within the database in binary object format. <br />
     4. Photos can be set to either public or private mode, depending on their visibility to guest users. <br />
   
-  - File Editor  <br />
+  - File Editor 
     1. Images can be modified by adding a black border and converting them into black and white.  <br />
     2. Once an image is uploaded, the server redirects the user to the photo editor. Here, users can apply filters, save changes, or delete the image. <br />
 

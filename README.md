@@ -6,12 +6,8 @@ This project involves implementing an online photo editor and an album for photo
 ## Website Link
 The website for this project is hosted on the Render server. You can access it [here](<https://one155143402-csci4140.onrender.com/index.php>). <br />
 Login Credentials  (username and pd are the same):
-  - Admin Account:
-    - Username: admin01
-    - Password: admin01
-  - User Account:
-    - Username: user01
-    - Password: user01
+  - Admin Account:admin01
+  - User Account: user01
 
 ## Directory Structure
 Explain the purpose and functionality of each directory and its corresponding files in your project.

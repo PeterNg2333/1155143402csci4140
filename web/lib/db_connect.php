@@ -111,7 +111,7 @@ function csci4140_upload_image(){
 
 function store_file($file){
     global $conn;
-    $allowedTypes = ['image/jpg', 'image/png', 'image/gif'];
+    $allowedTypes = ['image/jpg', 'image/png', 'image/gif', 'image/jpeg'];
     $fileType = $file['type'];
     if (!in_array($fileType, $allowedTypes) && !in_array(mime_content_type($file['tmp_name']), $allowedTypes)) {
 

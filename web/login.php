@@ -15,7 +15,7 @@
                   <input style="width: 250px;" id="username" name="username" placeholder="UserName (exclude $@'&quot;=&|)" required type="text" pattern="[^$@'&quot;=&|]+"/>
               </div> 
               <div class="form-outline text-center  mb-4 mx-auto"> 
-                  <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password (exclude $@'&quot;=&|)" pattern="[^$@'&quot;=&|]+" required/>
+                  <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password (exclude $@'&quot;=&|)" pattern="[^$=@'\\\&quot;&|]+" required/>
               </div>
 
               <!-- CSRF -->

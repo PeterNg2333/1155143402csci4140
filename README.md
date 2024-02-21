@@ -56,6 +56,10 @@ The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render se
     5. After logout (Exit), any user action e.g., upload image will be invalid and redirect to login page.
     6. If the login is failed, message: "User not found, go back to index.php"
 
+  - Image upload
+    1. Only logined user can upload image, they can choose to upload public or private image.
+    2. Image must be loaded before it is submitted
+
   - Photo album 
     1. Photos are displayed in chronological order based on their creation time. The order is not affected by the time of modification, with older photos appearing at the end. <br />
     2. Pagination: Each page displays only 8 photos. Users can navigate through the pages using the 'previous' and 'next' buttons to view additional sets of 8 photos. <br />

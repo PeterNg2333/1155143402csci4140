@@ -177,7 +177,7 @@
                         echo '<form  method="post" action="./lib/process.php?action=upload_image" enctype="multipart/form-data" class="d-flex">';
                         echo '      <div class="input-group">';
                         echo '          <label for="inputGroupFile" class="input-group-text bg-light border-light">Upload Photo:</label>';
-                        echo '          <input type="file" name="file" class="form-control d-none" id="inputGroupFile" accept="image/*">';
+                        echo '          <input type="file" name="file" required class="form-control d-none" id="inputGroupFile" accept="image/*">';
                         echo '          <label class="input-group-text btn btn-info text-white" for="inputGroupFile">Upload</label>  ';
                         echo '      </div>';
                         echo '      <button type="submit" class="btn btn-sm btn-primary ms-2">Submit</button>';

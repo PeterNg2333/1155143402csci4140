@@ -8,6 +8,12 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
   </head>
   <body>
+        <style>
+            /* Debug: https://github.com/twbs/bootstrap/issues/33757 */
+            :root {
+                scroll-behavior: auto !important;
+                }
+        </style>
       <main class="mt-5">
           <form class="mx-auto" method="POST" action="./lib/process.php?action=login">
               <h3 class="text-center mx-auto mb-4 loginHeader" style="font-weight: bold;"> SIGN IN TO YOUR ACCOUNT</h3>

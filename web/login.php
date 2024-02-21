@@ -18,10 +18,10 @@
           <form class="mx-auto" method="POST" action="./lib/process.php?action=login">
               <h3 class="text-center mx-auto mb-4 loginHeader" style="font-weight: bold;"> SIGN IN TO YOUR ACCOUNT</h3>
               <div class="form-outline text-center  mb-4 mx-auto">  
-                  <input style="width: 250px;" id="username" name="username" placeholder="UserName (exclude $@&|)" required type="text" pattern="[^$@\|\=\&]" title="illegal charactor" />
+                  <input style="width: 250px;" id="username" name="username" placeholder="UserName (exclude $@&|)" required type="text" pattern="[^$@\|\=\&]+" title="illegal charactor" />
               </div> 
               <div class="form-outline text-center  mb-4 mx-auto"> 
-                  <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password (exclude $@=&|)" pattern="[^$@\|\=\&]" title="illegal charactor" required/>
+                  <input style="width: 250px;" type="password" id="password" name="password" placeholder="Password (exclude $@=&|)" pattern="[^$@\|\=\&]+" title="illegal charactor" required/>
               </div>
 
               <!-- CSRF -->

@@ -13,10 +13,10 @@ Login Credentials  (username and pd are the same):
 Explain the purpose and functionality of each directory and its corresponding files in your project.
 
 - `web`: all the source code for this webpage is stored here
-  - `index.php`: The index page that provides two functions: displaying the stored photos and an interface that allows the logined user to upload a photo.
+  - `index.php`: The index page that provides two functions: displaying the stored photos, edit photo and an interface that allows the logined user to upload a photo.
   - `initialization.php`: An optional interface for the administrator to confirm the initialization procedure.
   - `login.php`: Implements a login program and uses a cookie to authenticate a user session.
-  - `photo.php`:  The editor that shows the original photo and the modified photo if a filter is applied.
+  - `photo_editor.php`:  The editor that shows the original photo and the modified photo if a filter is applied.
   - `lib`: directory
   - `Resourcs`: directory
 
@@ -35,7 +35,7 @@ Explain the purpose and functionality of each directory and its corresponding fi
 - `web/Resourcs`: the directory store all the static resources e.g., icon of the website 
 
 ## Building the System
-The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render serves as the primary development platform. It utilizes Docker for application deployment and offers a complimentary PostgreSQL instance. Additionally, the standard PHP library, Imagic, is employed to generate filtered images.
+The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render serves as the primary development platform. It utilizes Docker for application deployment and offers a complimentary PostgreSQL instance. Additionally, the standard PHP library, ImageMagick, is employed to generate filtered images.
 
 
 
@@ -54,6 +54,7 @@ The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render se
     3. The login, loginout and authentication system is managed by several functions including: is_auth(), csci4140_login(), csci4140_logout(), and is_admin($username), among others. <br />
     4. Both the cookies (login name and pd) and session (session id) are used to store the login status of the user
     5. After logout (Exit), any user action e.g., upload image will be invalid and redirect to login page.
+    6. If the login is failed, message: "User not found, go back to index.php"
 
   - Photo album 
     1. Photos are displayed in chronological order based on their creation time. The order is not affected by the time of modification, with older photos appearing at the end. <br />
@@ -64,6 +65,7 @@ The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render se
   - File Editor 
     1. Images can be modified by adding a black border and converting them into black and white.  <br />
     2. Once an image is uploaded, the server redirects the user to the photo editor. Here, users can apply filters, save changes, or delete the image. <br />
+    3. Once finish button is click, the changes is save and go back to main page. (if user don't click finish and leave the page, we also assume it save the image without filter)
 
 
 

@@ -1,4 +1,4 @@
-# Project Name
+# Web Instagram - 1155143402 Ng Kin Pak
 
 ## Introduction
 This project involves implementing an online photo editor and an album for photos uploaded to the system, referred to as "Web Instagram". 

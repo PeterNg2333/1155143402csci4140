@@ -67,7 +67,7 @@ The system is constructed solely using PHP, HTML, and CSS (Bootstrap). Render se
     4. Photos can be set to either public or private mode, depending on their visibility to guest users. <br />
   
   - File Editor 
-    1. Images can be modified by adding a black border and converting them into black and white.  <br />
+    1. Images can be modified by adding a black border and converting them into black and white. (However, I cannot apply the filter to animated gif image) <br />
     2. Once an image is uploaded, the server redirects the user to the photo editor. Here, users can apply filters, save changes, or delete the image. <br />
     3. Once finish button is click, the changes is save and go back to main page. (if user don't click finish and leave the page, we also assume it save the image without filter)
 
